@@ -12,7 +12,6 @@ public class Verb extends RealmObject {
     @PrimaryKey @Required
     private String id;
 
-    @Required
     private String infinitive;
     @Required
     private String simplePast;

@@ -33,7 +33,7 @@ public class VerbDAO {
 
         return allVerbs;
     }
-    // ajouter une bière dans les favoris
+    // ajouter un verb
     public void addVerb(Verb verb) {
 //        Verb verb = createFromBeer(verb);
 
@@ -47,7 +47,43 @@ public class VerbDAO {
         realm.copyToRealmOrUpdate(verb);
         realm.commitTransaction();
     }
-    // supprimer une bière des favoris
+
+    public void updateVerbInfinitive(Verb verb, String infinitive) {
+        realm.beginTransaction();
+        verb.setInfinitive(infinitive);
+        realm.copyToRealmOrUpdate(verb);
+        realm.commitTransaction();
+    }
+
+    public void updateVerbFrench(Verb verb, String french) {
+        realm.beginTransaction();
+        verb.setFrench(french);
+        realm.copyToRealmOrUpdate(verb);
+        realm.commitTransaction();
+    }
+
+    public void updateVerbSimplePast(Verb verb, String simplePast) {
+        realm.beginTransaction();
+        verb.setSimplePast(simplePast);
+        realm.copyToRealmOrUpdate(verb);
+        realm.commitTransaction();
+    }
+
+    public void updateVerbPastParticiple(Verb verb, String pastParticiple) {
+        realm.beginTransaction();
+        verb.setPastParticiple(pastParticiple);
+        realm.copyToRealmOrUpdate(verb);
+        realm.commitTransaction();
+    }
+
+    public void updateVerbGrade(Verb verb, Integer grade) {
+        realm.beginTransaction();
+        verb.setGrade(grade);
+        realm.copyToRealmOrUpdate(verb);
+        realm.commitTransaction();
+    }
+
+    // supprimer un verb
     public void deleteVerb(Verb verb) {
         realm.beginTransaction();
         verb.deleteFromRealm();
@@ -67,7 +103,7 @@ public class VerbDAO {
         realm.commitTransaction();
     }
 
-    // récupérer un objet bière par rapport à son ID
+    // récupérer un objet verb par rapport à son ID
     public @Nullable
         Verb getVerb(String id) {
         return realm.where(Verb.class).equalTo("id", id).findFirst();
@@ -78,15 +114,4 @@ public class VerbDAO {
     Verb getVerbByFrench(String french) {
         return realm.where(Verb.class).equalTo("french", french, Case.INSENSITIVE).findFirst();
     }
-
-    /*private static Verb createFromBeer(Verb verb) {
-        Verb verbDB = new Verb();
-        verbDB.setId(verb.getId());
-        verbDB.setName(verb.getName());
-        verbDB.setNameDisplay(verb.getNameDisplay());
-        verbDB.setAbv(verb.getAbv());
-        verbDB.setDescription(verb.getDescription());
-
-        return verbDB;
-    }*/
 }
