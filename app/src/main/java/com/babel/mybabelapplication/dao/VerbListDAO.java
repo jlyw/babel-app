@@ -11,10 +11,6 @@ import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-/**
- * Created by Lucas on 14/12/2016.
- */
-
 public class VerbListDAO {
     private final Realm realm;
 
@@ -58,7 +54,7 @@ public class VerbListDAO {
         return realm.where(VerbList.class).equalTo("id", id).findFirst();
     }
 
-    // récupérer un objet Verb par rapport à son name
+    // récupérer un objet VerbList par rapport à son name
     public @Nullable
     VerbList getVerbListByName(String name) {
         return realm.where(VerbList.class).equalTo("name", name, Case.INSENSITIVE).findFirst();
