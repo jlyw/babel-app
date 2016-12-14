@@ -1,14 +1,26 @@
 package com.babel.mybabelapplication.model;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
+
 /**
  * Created by Lucas on 13/12/2016.
  */
 
-public class Verb {
+public class Verb extends RealmObject {
+    @PrimaryKey @Required
     private String id;
+
+    @Required
     private String infinitive;
+    @Required
     private String simplePast;
+    @Required
     private String pastParticiple;
+    @Required
+    private String french;
+    private Integer grade;
 
     public String getId() {
         return id;
@@ -39,4 +51,12 @@ public class Verb {
     }
 
     public void setPastParticiple(String pastParticiple) { this.pastParticiple = pastParticiple; }
+
+    public String getFrench() { return french; }
+
+    public void setFrench(String french) { this.french = french; }
+
+    public Integer getGrade() { return grade; }
+
+    public void setGrade(Integer grade) { this.grade = grade; }
 }
