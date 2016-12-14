@@ -8,13 +8,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
-public class MainActivity extends ActionBarActivity {
+public class CreateListActivity extends ActionBarActivity {
     Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_create_list);
 
         final BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
