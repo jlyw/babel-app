@@ -20,8 +20,12 @@ import android.widget.TextView;
 
 import com.babel.mybabelapplication.dao.VerbDAO;
 import com.babel.mybabelapplication.dao.VerbListDAO;
+import com.babel.mybabelapplication.dao.VocDAO;
+import com.babel.mybabelapplication.dao.VocListDAO;
 import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.VerbList;
+import com.babel.mybabelapplication.model.Voc;
+import com.babel.mybabelapplication.model.VocList;
 import com.babel.mybabelapplication.network.JsonTaskVerbSingle;
 import com.babel.mybabelapplication.network.UrlBuilder;
 
@@ -40,6 +44,8 @@ public class MainActivity extends ActionBarActivity {
     Verb verb2;
     private VerbDAO verbDao;
     private VerbListDAO verbListDao;
+    private VocDAO vocDAO;
+    private VocListDAO vocListDao;
 
     // Bind elements
     @BindView(R.id.test_text_view)
@@ -85,28 +91,28 @@ public class MainActivity extends ActionBarActivity {
                 findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.action_home:
-                                intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-                                break;
-                            case R.id.action_new_list:
-                                intent = new Intent(getApplicationContext(), CreateListActivity.class);
-                                startActivity(intent);
-                                break;
-                            case R.id.action_profile:
-                                intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                                startActivity(intent);
-                                break;
-                            default:
-                                return onNavigationItemSelected(item);
-                        }
-                        return false;
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.action_home:
+                            intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                            break;
+                        case R.id.action_new_list:
+                            intent = new Intent(getApplicationContext(), CreateListActivity.class);
+                            startActivity(intent);
+                            break;
+                        case R.id.action_profile:
+                            intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                            startActivity(intent);
+                            break;
+                        default:
+                            return onNavigationItemSelected(item);
                     }
-                });
+                    return false;
+                }
+            });
 
         // Get a verb - If remove those lines, remove textView on activity_main.xml
         verb1 = new Verb();
@@ -120,6 +126,8 @@ public class MainActivity extends ActionBarActivity {
 
         verbDao = new VerbDAO();
         verbListDao = new VerbListDAO();
+        vocDAO = new VocDAO();
+        vocListDao = new VocListDAO();
     }
 
     // Used for the verb1
@@ -144,11 +152,16 @@ public class MainActivity extends ActionBarActivity {
             */
             /*
             verbDao.addVerbToVerbListId(verb1, verbList1.getId());
-            /*
-            List<VerbList> allVerbLists = verbListDao.getAllVerbLists();
-            Verb verb3 = (Verb) allVerbLists.get(1).getVerbs().where().findAll().get(0);
-            testTextView3.setText(verb3.getInfinitive());
             */
+            List<VocList> allVocLists = vocListDao.getAllVocLists();
+            testTextView3.setText(allVocLists.toString());
+            try {
+                testTextView4.setText(allVocLists.get(2).getVocs().where().findAll().get(0).getFrench());
+                List<Voc> allVocOfAList = vocDAO.getAllVocsOffOneList(allVocLists.get(2).getId());
+                testTextView.setText(allVocOfAList.get(0).getEnglish());
+            } catch (IndexOutOfBoundsException ignored) {
+            }
+
         }
     };
 
