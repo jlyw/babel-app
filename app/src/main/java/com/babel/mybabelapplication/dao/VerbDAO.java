@@ -27,55 +27,45 @@ public class VerbDAO {
         realm = Realm.getInstance(config);
     }
 
-    // récupérer toutes les bières des favoris
+    // récupérer tous les verbs
     public List<Verb> getAllVerbs() {
         List<Verb> allVerbs = realm.where(Verb.class).findAll();
 
         return allVerbs;
     }
+
     // ajouter un verb
     public void addVerb(Verb verb) {
-//        Verb verb = createFromBeer(verb);
-
-//        newVerb.setFrench(verb.getFrench());
-//        newVerb.setInfinitive(verb.getInfinitive());
-//        newVerb.setSimplePast(verb.getSimplePast());
-//        newVerb.setPastParticiple(verb.getPastParticiple());
-//        newVerb.setGrade(verb.getGrade());
         realm.beginTransaction();
-//        Verb newVerb = realm.createObject(Verb.class, verb);
         realm.copyToRealmOrUpdate(verb);
         realm.commitTransaction();
     }
 
+    // Update all attributes
     public void updateVerbInfinitive(Verb verb, String infinitive) {
         realm.beginTransaction();
         verb.setInfinitive(infinitive);
         realm.copyToRealmOrUpdate(verb);
         realm.commitTransaction();
     }
-
     public void updateVerbFrench(Verb verb, String french) {
         realm.beginTransaction();
         verb.setFrench(french);
         realm.copyToRealmOrUpdate(verb);
         realm.commitTransaction();
     }
-
     public void updateVerbSimplePast(Verb verb, String simplePast) {
         realm.beginTransaction();
         verb.setSimplePast(simplePast);
         realm.copyToRealmOrUpdate(verb);
         realm.commitTransaction();
     }
-
     public void updateVerbPastParticiple(Verb verb, String pastParticiple) {
         realm.beginTransaction();
         verb.setPastParticiple(pastParticiple);
         realm.copyToRealmOrUpdate(verb);
         realm.commitTransaction();
     }
-
     public void updateVerbGrade(Verb verb, Integer grade) {
         realm.beginTransaction();
         verb.setGrade(grade);
@@ -89,6 +79,7 @@ public class VerbDAO {
         verb.deleteFromRealm();
         realm.commitTransaction();
     }
+
     // la bière est-elle présente dans les favoris
     /*public boolean isPresentInFavorites(Verb verb) {
         Verb verb = getVerb(verb.getId());
@@ -96,6 +87,7 @@ public class VerbDAO {
         return verb != null;
     }*/
 
+//    Ajouter un verb à une liste
     public void addVerbToVerbListId(Verb verb, String verbListId) {
         realm.beginTransaction();
         VerbList verbList = realm.where(VerbList.class).equalTo("id", verbListId).findFirst();
@@ -113,5 +105,11 @@ public class VerbDAO {
     public @Nullable
     Verb getVerbByFrench(String french) {
         return realm.where(Verb.class).equalTo("french", french, Case.INSENSITIVE).findFirst();
+    }
+
+    // récupérer un objet Verb par rapport à son infinitive
+    public @Nullable
+    Verb getVerbByInfinitive(String infinitive) {
+        return realm.where(Verb.class).equalTo("infinitive", infinitive, Case.INSENSITIVE).findFirst();
     }
 }

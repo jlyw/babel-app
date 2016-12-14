@@ -2,10 +2,12 @@ package com.babel.mybabelapplication.dao;
 
 import android.support.annotation.Nullable;
 
+import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.VerbList;
 
 import java.util.List;
 
+import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -34,18 +36,21 @@ public class VerbListDAO {
         realm.copyToRealmOrUpdate(verbList);
         realm.commitTransaction();
     }
+
+    // Update name attributes
+    public void updateVerbListName(VerbList verbList, String name) {
+        realm.beginTransaction();
+        verbList.setName(name);
+        realm.copyToRealmOrUpdate(verbList);
+        realm.commitTransaction();
+    }
+
     // supprimer une verbList
     public void deleteVerbList(VerbList verbList) {
         realm.beginTransaction();
         verbList.deleteFromRealm();
         realm.commitTransaction();
     }
-    // la bière est-elle présente dans les favoris
-    /*public boolean isPresentInFavorites(Verb verb) {
-        Verb verb = getVerb(verb.getId());
-
-        return verb != null;
-    }*/
 
     // récupérer un objet verbList par rapport à son ID
     public @Nullable
@@ -56,6 +61,6 @@ public class VerbListDAO {
     // récupérer un objet Verb par rapport à son name
     public @Nullable
     VerbList getVerbListByName(String name) {
-        return realm.where(VerbList.class).equalTo("name", name).findFirst();
+        return realm.where(VerbList.class).equalTo("name", name, Case.INSENSITIVE).findFirst();
     }
 }

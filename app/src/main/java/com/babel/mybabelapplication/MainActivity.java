@@ -68,23 +68,26 @@ public class MainActivity extends Activity {
             testTextView.setText(verb1.getInfinitive() + " " + verb1.getSimplePast() + " " + verb1.getPastParticiple());
             verbDao.addVerb(verb1);
 
-            verb2 = verbDao.getVerb("7ed22ae7-5161-421e-99b9-45364f043375");
+            verb2 = verbDao.getVerb(verb1.getId());
             assert verb2 != null;
             testTextView2.setText(verb2.getFrench() + " " + verb2.getInfinitive() + " " + verb2.getId());
-
+            /*
             verbDao.updateVerbInfinitive(verb2, "Merci le Droide ? ._.");
             testTextView4.setText(verb2.getInfinitive());
-
-            /*VerbList verbList1 = new VerbList();
+            */
+            /*
+            VerbList verbList1 = new VerbList();
             verbList1.setName("dat_list2");
             verbList1.setId(UUID.randomUUID().toString());
-            verbListDao.addVerbList(verbList1);*/
-
-//            verbDao.addVerbToVerbListId(verb1, verbList1.getId());
+            verbListDao.addVerbList(verbList1);
+            */
+            /*
+            verbDao.addVerbToVerbListId(verb1, verbList1.getId());
             /*
             List<VerbList> allVerbLists = verbListDao.getAllVerbLists();
             Verb verb3 = (Verb) allVerbLists.get(1).getVerbs().where().findAll().get(0);
-            testTextView3.setText(verb3.getInfinitive());*/
+            testTextView3.setText(verb3.getInfinitive());
+            */
         }
     };
 }
