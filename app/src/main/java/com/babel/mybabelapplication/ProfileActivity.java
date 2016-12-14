@@ -29,7 +29,7 @@ public class ProfileActivity extends ActionBarActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {it 
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_home:
                                 intent = new Intent(getApplicationContext(), MainActivity.class);
