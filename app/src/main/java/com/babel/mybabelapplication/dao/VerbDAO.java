@@ -3,11 +3,14 @@ package com.babel.mybabelapplication.dao;
 import android.support.annotation.Nullable;
 
 import com.babel.mybabelapplication.model.Verb;
+import com.babel.mybabelapplication.model.VerbList;
 
 import java.util.List;
 import java.util.UUID;
 
+import io.realm.Case;
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 /**
  * Created by Lucas on 14/12/2016.
@@ -17,7 +20,11 @@ public class VerbDAO {
     private final Realm realm;
 
     public VerbDAO() {
-        realm = Realm.getDefaultInstance();
+        RealmConfiguration config = new RealmConfiguration
+                .Builder()
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        realm = Realm.getInstance(config);
     }
 
     // récupérer toutes les bières des favoris
@@ -53,6 +60,13 @@ public class VerbDAO {
         return verb != null;
     }*/
 
+    public void addVerbToVerbListId(Verb verb, String verbListId) {
+        realm.beginTransaction();
+        VerbList verbList = realm.where(VerbList.class).equalTo("id", verbListId).findFirst();
+        verbList.getVerbs().add(verb);
+        realm.commitTransaction();
+    }
+
     // récupérer un objet bière par rapport à son ID
     public @Nullable
         Verb getVerb(String id) {
@@ -62,7 +76,7 @@ public class VerbDAO {
     // récupérer un objet Verb par rapport à son french
     public @Nullable
     Verb getVerbByFrench(String french) {
-        return realm.where(Verb.class).equalTo("french", french).findFirst();
+        return realm.where(Verb.class).equalTo("french", french, Case.INSENSITIVE).findFirst();
     }
 
     /*private static Verb createFromBeer(Verb verb) {

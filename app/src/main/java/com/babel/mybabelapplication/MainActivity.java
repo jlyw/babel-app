@@ -7,7 +7,9 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.babel.mybabelapplication.dao.VerbDAO;
+import com.babel.mybabelapplication.dao.VerbListDAO;
 import com.babel.mybabelapplication.model.Verb;
+import com.babel.mybabelapplication.model.VerbList;
 import com.babel.mybabelapplication.network.JsonTaskVerbSingle;
 import com.babel.mybabelapplication.network.UrlBuilder;
 
@@ -17,12 +19,14 @@ import java.util.UUID;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 public class MainActivity extends Activity {
 
     Verb verb1;
     Verb verb2;
     private VerbDAO verbDao;
+    private VerbListDAO verbListDao;
 
     @BindView(R.id.test_text_view)
     protected TextView testTextView;
@@ -42,9 +46,9 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
 
         verb1 = new Verb();
-        verb1.setFrench("avoir");
+        verb1.setFrench("etre");
         verb1.setId(UUID.randomUUID().toString());
-        new JsonTaskVerbSingle(this, verb1).execute(UrlBuilder.getVerbUrl("have"));
+        new JsonTaskVerbSingle(this, verb1).execute(UrlBuilder.getVerbUrl("be"));
 
         /* HANDLER for set number of adverts */
         int interval = 400;
@@ -52,6 +56,7 @@ public class MainActivity extends Activity {
         handler.postDelayed(runnable, interval);
 
         verbDao = new VerbDAO();
+        verbListDao = new VerbListDAO();
     }
 
     private Handler handler = new Handler();
@@ -60,12 +65,20 @@ public class MainActivity extends Activity {
             testTextView.setText(verb1.getInfinitive() + " " + verb1.getSimplePast() + " " + verb1.getPastParticiple());
             verbDao.addVerb(verb1);
 
-            verb2 = verbDao.getVerb(verb1.getId());
+            verb2 = verbDao.getVerbByFrench("chanter");
             assert verb2 != null;
-            testTextView2.setText(verb2.getFrench() + verb1.getId());
+            testTextView2.setText(verb2.getFrench() + verb2.getInfinitive() + verb2.getId());
 
-            List<Verb> allVerbs = verbDao.getAllVerbs();
-            testTextView3.setText(allVerbs.toString());
+            /*VerbList verbList1 = new VerbList();
+            verbList1.setName("dat_list2");
+            verbList1.setId(UUID.randomUUID().toString());
+            verbListDao.addVerbList(verbList1);*/
+
+//            verbDao.addVerbToVerbListId(verb1, verbList1.getId());
+
+            List<VerbList> allVerbLists = verbListDao.getAllVerbLists();
+            Verb verb3 = (Verb) allVerbLists.get(1).getVerbs().where().findAll().get(0);
+            testTextView3.setText(verb3.getInfinitive());
         }
     };
 }
