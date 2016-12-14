@@ -1,6 +1,8 @@
 package com.babel.mybabelapplication;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -28,6 +30,13 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Change color of action bar
+        //ColorDrawable colorDrawable = new ColorDrawable();
+        //android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        //colorDrawable.setColor(0xffeb5e58);
+        //assert actionBar != null;
+        //actionBar.setBackgroundDrawable(colorDrawable);
 
         final BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);

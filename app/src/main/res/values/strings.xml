@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">MyBabelApplication</string>
-    <string name="text_accueil">Accueil</string>
+    <string name="text_accueil">Bon</string>
     <string name="text_newList">Créer une liste</string>
     <string name="text_profil">Profil</string>
-    <string name="title_activity_main">Accueil</string>
+    <string name="title_activity_main">Bonjour</string>
     <string name="title_activity_profile">Mon profil</string>
+    <string name="title_activity_create_list">Créer une nouvelle liste</string>
 </resources>

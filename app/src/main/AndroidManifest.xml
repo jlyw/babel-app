@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat">
+        android:theme="@style/AppBaseTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main">
@@ -23,7 +23,7 @@
             android:label="@string/title_activity_profile" />
         <activity
             android:name=".CreateListActivity"
-            android:label="Créer une nouvelle liste"></activity>
+            android:label="@string/title_activity_create_list"></activity>
     </application>
 
 </manifest>
