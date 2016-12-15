@@ -29,6 +29,12 @@ public class VocDAO {
         return realm.where(Voc.class).findAll();
     }
 
+    // récupérer tous les vocs d'une liste
+    public List<Voc> getAllVocsOffOneList(String listId) {
+        VocList vocList = realm.where(VocList.class).equalTo("id", listId).findFirst();
+        return vocList.getVocs();
+    }
+
     // ajouter un voc
     public void addVoc(Voc voc) {
         realm.beginTransaction();

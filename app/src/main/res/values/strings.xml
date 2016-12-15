@@ -9,4 +9,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_liste_name_placeholder">Nom de la liste</string>
+    <string name="save_button">Enregistrer</string>
+    <string name="error_message_list_name_empty">Le nom de votre liste ne peut pas être vide !</string>
+    <string name="error_title_list_name_empty">Création de liste</string>
+    <string name="placeholder_create_voc_fr">Français</string>
+    <string name="placeholder_create_voc_en">Anglais</string>
 </resources>

@@ -8,18 +8,53 @@
     tools:context="com.babel.mybabelapplication.CreateListActivity">
 
     <!-- Content -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
-        <TextView
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:layout_marginTop="50dp">
+
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World! I'm on create list activity" />
-    </RelativeLayout>
+            android:width="240dp"
+            android:layout_gravity="center"
+            android:hint="@string/create_liste_name_placeholder"
+            android:textColorHint="@color/bottomNavColor"
+            android:textColor="#eb5e58"
+            android:id="@+id/edit_text_voc_list_name"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="240dp"
+            android:layout_gravity="center"
+            android:hint="@string/placeholder_create_voc_fr"
+            android:textColorHint="@color/bottomNavColor"
+            android:textColor="#eb5e58"
+            android:id="@+id/edit_text_voc_french" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="240dp"
+            android:layout_gravity="center"
+            android:hint="@string/placeholder_create_voc_en"
+            android:textColorHint="@color/bottomNavColor"
+            android:textColor="#eb5e58"
+            android:id="@+id/edit_text_voc_english"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:layout_gravity="center"
+            android:id="@+id/create_voc_list_button"/>
+    </LinearLayout>
 
     <!-- Bottom nav -->
     <android.support.design.widget.BottomNavigationView
