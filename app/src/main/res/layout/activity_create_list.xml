@@ -30,6 +30,19 @@
             android:textColor="#eb5e58"
             android:id="@+id/edit_text_voc_list_name"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_rectangle"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="#eb5e58"
+            android:textSize="18sp"
+            android:id="@+id/create_voc_list_button"/>
+
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="295dp"
@@ -37,42 +50,39 @@
             android:id="@+id/list_view_create_voc"
             />
 
-        <EditText
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:width="200dp"
-            android:layout_above="@+id/edit_text_voc_english"
-            android:hint="@string/placeholder_create_voc_fr"
-            android:textColorHint="@color/bottomNavColor"
-            android:textColor="#eb5e58"
-            android:id="@+id/edit_text_voc_french" />
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/edit_text_voc_english"
+                android:hint="@string/placeholder_create_voc_fr"
+                android:textColorHint="@color/bottomNavColor"
+                android:textColor="#eb5e58"
+                android:id="@+id/edit_text_voc_french"
+                android:layout_weight=".4"/>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:width="200dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:hint="@string/placeholder_create_voc_en"
-            android:textColorHint="@color/bottomNavColor"
-            android:textColor="#eb5e58"
-            android:id="@+id/edit_text_voc_english"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/placeholder_create_voc_en"
+                android:textColorHint="@color/bottomNavColor"
+                android:textColor="#eb5e58"
+                android:id="@+id/edit_text_voc_english"
+                android:layout_weight=".4"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ajouter Voc"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:id="@+id/create_voc_button"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/save_button"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:id="@+id/create_voc_list_button"/>
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:text="+"
+                android:textSize="40sp"
+                android:textColor="#eb5e58"
+                android:background="@drawable/button_circle"
+                android:id="@+id/create_voc_button"/>
+        </LinearLayout>
     </RelativeLayout>
 
     <!-- Bottom nav -->

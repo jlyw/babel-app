@@ -3,6 +3,7 @@ package com.babel.mybabelapplication;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -54,6 +56,12 @@ public class CreateListActivity extends ActionBarActivity {
     @BindView(R.id.list_view_create_voc)
     protected ListView listViewVocs;
 
+    @BindView(R.id.create_voc_list_button)
+    protected Button createVocListButton;
+
+    @BindView(R.id.create_voc_button)
+    protected Button createVocButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +69,13 @@ public class CreateListActivity extends ActionBarActivity {
 
         Realm.init(this);
         ButterKnife.bind(this);
+
+        // Fonts
+        Typeface overlockBold = Typeface.createFromAsset(getAssets(),"fonts/OverlockBold.ttf");
+
+        // Define fonts for elements
+        createVocListButton.setTypeface(overlockBold);
+        createVocButton.setTypeface(overlockBold);
 
         // Show  toolbar and title
         toolbar = (Toolbar) findViewById(R.id.toolbar);
