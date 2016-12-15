@@ -22,9 +22,9 @@ public class VerbListDAO {
         realm = Realm.getInstance(config);
     }
 
-    // récupérer toutes les listVerb
+    // récupérer tous les listVerb
     public List<VerbList> getAllVerbLists() {
-        return realm.where(VerbList.class).findAll();
+        return realm.where(VerbList.class).findAllSorted("name");
     }
     // ajouter une verbList
     public void addVerbList(VerbList verbList) {
