@@ -7,4 +7,6 @@
     <color name="colorAccent">#E42921</color>
     <color name="bottomNavColor">#ffa468</color>
     <color name="bottomNavTextColor">#FFFFFF</color>
+    <color name="row_background">#59ffa468</color>
+    <color name="row_divider">#ffa468</color>
 </resources>

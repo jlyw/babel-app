@@ -135,12 +135,14 @@ public class MainActivity extends ActionBarActivity {
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable(){
         public void run() {
+            /*
             testTextView.setText(verb1.getInfinitive() + " " + verb1.getSimplePast() + " " + verb1.getPastParticiple());
             verbDao.addVerb(verb1);
 
             verb2 = verbDao.getVerb(verb1.getId());
             assert verb2 != null;
             testTextView2.setText(verb2.getFrench() + " " + verb2.getInfinitive() + " " + verb2.getId());
+            */
             /*
             verbDao.updateVerbInfinitive(verb2, "Merci le Droide ? ._.");
             testTextView4.setText(verb2.getInfinitive());
@@ -154,6 +156,7 @@ public class MainActivity extends ActionBarActivity {
             /*
             verbDao.addVerbToVerbListId(verb1, verbList1.getId());
             */
+            /*
             List<VocList> allVocLists = vocListDao.getAllVocLists();
             testTextView3.setText(allVocLists.toString());
             try {
@@ -162,6 +165,7 @@ public class MainActivity extends ActionBarActivity {
                 testTextView.setText(allVocOfAList.get(0).getEnglish());
             } catch (IndexOutOfBoundsException ignored) {
             }
+            */
         }
     };
 
