@@ -7,13 +7,33 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.babel.mybabelapplication.dao.VerbDAO;
+import com.babel.mybabelapplication.dao.VerbListDAO;
+import com.babel.mybabelapplication.dao.VocDAO;
+import com.babel.mybabelapplication.dao.VocListDAO;
+import com.babel.mybabelapplication.model.Verb;
+import com.babel.mybabelapplication.model.Voc;
+
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ProfileActivity extends ActionBarActivity {
     Intent intent;
     private Toolbar toolbar;
+
+    @BindView(R.id.text_view_profile)
+    protected TextView textViewProfile;
+    private VerbDAO verbDao;
+    private VerbListDAO verbListDao;
+    private VocDAO vocDAO;
+    private VocListDAO vocListDao;
+    private List<Voc> allVocs;
+    private List<Verb> allVerbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +75,47 @@ public class ProfileActivity extends ActionBarActivity {
                 }
             }
         );
-    }
 
-    @OnClick(R.id.go_to_voc_list)
-    public void onGoToListVoc() {
-        intent = new Intent(getApplicationContext(), ShowVocListActivity.class);
-        intent.putExtra("LIST_VOC_ID", "7aacf75a-beeb-4298-bb72-5b66a44e198a");
-        startActivity(intent);
+        verbDao = new VerbDAO();
+        verbListDao = new VerbListDAO();
+        vocDAO = new VocDAO();
+        vocListDao = new VocListDAO();
+
+        allVocs = vocDAO.getAllVocs();
+        allVerbs = verbDao.getAllVerbs();
+        int masteringVoc = 0;
+        for( Voc item : allVocs) {
+            if(item.getGrade() == 2)
+                masteringVoc ++;
+        }
+        int masteringVerb = 0;
+        for( Verb item : allVerbs) {
+            if(item.getGrade() == 2)
+                masteringVerb ++;
+        }
+
+        int masteringWord = masteringVoc + masteringVerb;
+
+        int percentMasteringVoc;
+        int percentMasteringVerb;
+        if (allVocs.size() != 0) {
+            percentMasteringVoc = (masteringVoc * 100) / allVocs.size();
+        } else {
+            percentMasteringVoc = 0;
+        }
+        if (allVerbs.size() != 0) {
+            percentMasteringVerb = (masteringVerb * 100) / allVerbs.size();
+        } else {
+            percentMasteringVerb = 0;
+        }
+
+        textViewProfile.setText(
+            masteringWord + " mots maitrisés" + " --- " +
+            percentMasteringVoc + "% de mots de vocabulaire maîtrisé" + " --- " +
+            percentMasteringVerb + "% de verbes irréguliers maîtrisé" + " --- " +
+            masteringWord + " mots maitrisés" + " --- " +
+            masteringWord + " mots maitrisés" + " --- " +
+            masteringWord + " mots maitrisés" + " --- "
+        );
     }
 }
