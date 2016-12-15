@@ -122,7 +122,7 @@ public class CreateListActivity extends ActionBarActivity {
             vocDAO.addVoc(voc);
 
             vocs.add(voc);
-            vocsAdapter.add(voc.getFrench() + "<=>" + voc.getEnglish());
+            vocsAdapter.add(voc.getFrench() + " - " + voc.getEnglish());
 
             editTextVocFrench.setText("");
             editTextVocEnglish.setText("");
