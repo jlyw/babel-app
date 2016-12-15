@@ -63,9 +63,6 @@ public class VocabulaireFragment extends Fragment{
         vocListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("==================== SALUT ====================");
-                System.out.println(position);
-
                 VocList vocList = (VocList) vocListAdapter.getItem(position);
 
                 System.out.println(vocList.getName());
