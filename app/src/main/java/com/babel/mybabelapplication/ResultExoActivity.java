@@ -1,16 +1,24 @@
 package com.babel.mybabelapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.babel.mybabelapplication.dao.VocDAO;
 import com.babel.mybabelapplication.dao.VocListDAO;
+import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.realm.Realm;
 
 public class ResultExoActivity extends ActionBarActivity {
@@ -36,6 +44,9 @@ public class ResultExoActivity extends ActionBarActivity {
     private VocList vocList;
     private int totalPoint;
     private int resultPercent;
+    private Intent intent;
+    private VocDAO vocDAO;
+    private List<Voc> vocs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +62,18 @@ public class ResultExoActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
         vocListDAO = new VocListDAO();
+        vocDAO = new VocDAO();
+
         listVocId = getIntent().getStringExtra("LIST_VOC_ID");
         exoType = getIntent().getStringExtra("EXO_TYPE");
         listOfIndex = getIntent().getIntArrayExtra("RANDOM_INDEXING");
         listOfSuccess = getIntent().getIntArrayExtra("SUCCESS_LIST");
 
         vocList = vocListDAO.getVocList(listVocId);
+        vocs = vocDAO.getAllVocsOffOneList(listVocId);
+
+        toolbar.setTitle("Résultats - " + vocList.getName());
+
         totalPoint = 0;
         for( int i : listOfSuccess) {
             totalPoint += i;
@@ -64,9 +81,9 @@ public class ResultExoActivity extends ActionBarActivity {
         resultPercent = ((totalPoint * 100) / listOfIndex.length);
 
         toolbar.setTitle(vocList.getName());
-        if(resultPercent < 33) {
+        if(resultPercent <= 33) {
             textViewComment.setText("Dommage, recommence !");
-        } else if (resultPercent < 66) {
+        } else if (resultPercent <= 66) {
             textViewComment.setText("Pas mal !");
         } else if (resultPercent == 100) {
             textViewComment.setText("Parfait !");
@@ -75,5 +92,75 @@ public class ResultExoActivity extends ActionBarActivity {
         }
 
         textViewPercentResponse.setText(resultPercent + "% de bonnes réponses");
+    }
+
+    @OnClick(R.id.button_back_to_lists)
+    public void backToLists() {
+        intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.button_retry_exo)
+    public void RetryExo() {
+        if(Objects.equals(exoType, "voc")) {
+            intent = new Intent(getApplicationContext(), WriteExoVocListActivity.class);
+
+            int[] listOfIndex = new int[vocs.size()];
+            for (int i = 0; i < vocs.size(); ++i) {
+                listOfIndex[i] = i;
+            }
+            int index, temp;
+            Random random = new Random();
+            for (int i = listOfIndex.length - 1; i > 0; i--)
+            {
+                index = random.nextInt(i + 1);
+                temp = listOfIndex[index];
+                listOfIndex[index] = listOfIndex[i];
+                listOfIndex[i] = temp;
+            }
+
+            int[] listOfSuccess = new int[vocs.size()];
+            for (int i = 0; i < vocs.size(); ++i) {
+                listOfSuccess[i] = -1;
+            }
+
+            intent.putExtra("LIST_VOC_ID", listVocId);
+
+            intent.putExtra("RANDOM_INDEXING", listOfIndex);
+            intent.putExtra("SUCCESS_LIST", listOfSuccess);
+
+            intent.putExtra("INDEX", 0);
+            startActivity(intent);
+        } else {
+            /*intent = new Intent(getApplicationContext(), WriteExoVocListActivity.class);
+
+            int[] listOfIndex = new int[vocs.size()];
+            for (int i = 0; i < vocs.size(); ++i) {
+                listOfIndex[i] = i;
+            }
+            int index, temp;
+            Random random = new Random();
+            for (int i = listOfIndex.length - 1; i > 0; i--)
+            {
+                index = random.nextInt(i + 1);
+                temp = listOfIndex[index];
+                listOfIndex[index] = listOfIndex[i];
+                listOfIndex[i] = temp;
+            }
+
+            int[] listOfSuccess = new int[vocs.size()];
+            for (int i = 0; i < vocs.size(); ++i) {
+                listOfSuccess[i] = -1;
+            }
+
+            intent.putExtra("LIST_VOC_ID", listVocId);
+
+            intent.putExtra("RANDOM_INDEXING", listOfIndex);
+            intent.putExtra("SUCCESS_LIST", listOfSuccess);
+
+            intent.putExtra("INDEX", 0);
+            startActivity(intent);*/
+        }
+
     }
 }

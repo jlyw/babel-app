@@ -108,7 +108,9 @@ public class ShowVocListActivity extends ActionBarActivity {
 
     @OnClick(R.id.write_exo_voc_list_button)
     public void onStartListVocWriteExo() {
-//        vocs = vocDAO.randomAllVocsOffOneList(vocs);
+        if(vocs.size() == 0) {
+            return;
+        }
 
         intent = new Intent(getApplicationContext(), WriteExoVocListActivity.class);
 

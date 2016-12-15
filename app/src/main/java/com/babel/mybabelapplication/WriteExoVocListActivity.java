@@ -88,10 +88,10 @@ public class WriteExoVocListActivity extends ActionBarActivity {
         toolbar.setTitle(vocList.getName());
 
         textViewToTrad.setText(isFrench ? vocs.get(listOfIndex[index]).getFrench() : vocs.get(listOfIndex[index]).getEnglish());
-        textViewIndexing.setText(String.valueOf(index + 1) + " sur " + vocs.size() + "       " +
+        /*textViewIndexing.setText(String.valueOf(index + 1) + " sur " + vocs.size() + "       " +
                 String.valueOf(listOfSuccess[0]) + " " + String.valueOf(listOfSuccess[1]) + " " + String.valueOf(listOfSuccess[2]) +
                 "       " + String.valueOf(vocs.get(listOfIndex[index]).getGrade())
-        );
+        );*/
     }
 
     @OnClick(R.id.valid_voc_exo_button)

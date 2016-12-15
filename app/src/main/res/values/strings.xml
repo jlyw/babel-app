@@ -21,4 +21,5 @@
     <string name="title_warning_exo_voc">Attention</string>
     <string name="message_warning_exo_voc">Votre réponse est vide !</string>
     <string name="label_write_exo_voc_list">Exercice de vocabulaire</string>
+    <string name="label_result_exo_activity">Résultat de l\'exercice</string>
 </resources>
