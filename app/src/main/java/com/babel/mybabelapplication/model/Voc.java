@@ -1,10 +1,13 @@
 package com.babel.mybabelapplication.model;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class Voc extends RealmObject {
+public class Voc extends RealmObject implements  Serializable {
     @PrimaryKey @Required
     private String id;
 
@@ -13,6 +16,9 @@ public class Voc extends RealmObject {
     @Required
     private String english;
     private Integer grade;
+
+    @Ignore
+    private Boolean success;
 
     public String getId() {
         return id;
@@ -44,5 +50,13 @@ public class Voc extends RealmObject {
 
     public void setGrade(Integer grade) {
         this.grade = grade;
+    }
+
+    public Boolean getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Boolean success) {
+        this.success = success;
     }
 }

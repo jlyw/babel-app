@@ -18,4 +18,6 @@
     <string name="error_message_voc_create">Veuillez remplir les deux champs</string>
     <string name="error_title_voc_create">Attention !</string>
     <string name="label_show_voc_list_activity">Bienvenue sur votre liste</string>
+    <string name="title_warning_exo_voc">Attention</string>
+    <string name="message_warning_exo_voc">Votre réponse est vide !</string>
 </resources>
