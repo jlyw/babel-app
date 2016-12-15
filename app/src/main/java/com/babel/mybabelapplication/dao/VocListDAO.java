@@ -23,7 +23,7 @@ public class VocListDAO {
 
     // récupérer toutes les VocList
     public List<VocList> getAllVocLists() {
-        return realm.where(VocList.class).findAll();
+        return realm.where(VocList.class).findAllSorted("name");
     }
 
     // ajouter une vocList

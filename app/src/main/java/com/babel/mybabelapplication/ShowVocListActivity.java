@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBarActivity;
@@ -24,6 +25,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import butterknife.BindView;
@@ -47,6 +49,7 @@ public class ShowVocListActivity extends ActionBarActivity {
 
     @BindView(R.id.english_text_list_voc)
     protected TextView englishTextListVoc;
+    private TextToSpeech ttobj;
 
     @BindView(R.id.icon_hide_french_words)
     protected ImageView iconHideFrenchWords;
@@ -109,7 +112,16 @@ public class ShowVocListActivity extends ActionBarActivity {
 
         vocs = vocDAO.getAllVocsOffOneList(listVocId);
 
-        vocAdapter = new VocAdapter(this);
+        ttobj = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    ttobj.setLanguage(Locale.ENGLISH);
+                }
+            }
+        });
+
+        vocAdapter = new VocAdapter(this, ttobj);
         listViewVoc.setAdapter(vocAdapter);
 
         iconHideFrenchWords.setImageResource(R.drawable.hide_words);
