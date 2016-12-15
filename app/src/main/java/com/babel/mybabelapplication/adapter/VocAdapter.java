@@ -2,6 +2,7 @@ package com.babel.mybabelapplication.adapter;
 
 import android.content.Context;
 import android.media.Image;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.babel.mybabelapplication.model.VocList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +30,8 @@ import butterknife.ButterKnife;
 
 public class VocAdapter extends BaseAdapter {
 
+    private final TextToSpeech ttobjAdapter;
+    private TextToSpeech ttobj;
     private VocDAO vocDAO;
     private VocListDAO vocListDao;
 
@@ -76,8 +80,7 @@ public class VocAdapter extends BaseAdapter {
             imageViewListenWord.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println("========= FILE VocAdapter =========");
-                    System.out.println("========= ON CLICK SOUND BUTTON : id n°" + voc.getId() +" =========");
+                    ttobjAdapter.speak(voc.getEnglish(), TextToSpeech.QUEUE_FLUSH, null);
                 }
             });
         }
@@ -86,9 +89,11 @@ public class VocAdapter extends BaseAdapter {
     private final LayoutInflater layoutInflater;
     private List<Voc> vocs; //null
 
-    public VocAdapter(Context context) {
+    public VocAdapter(Context context, TextToSpeech ttobj) {
         vocs = new ArrayList<>();
         layoutInflater = LayoutInflater.from(context);
+
+        ttobjAdapter = ttobj;
     }
 
     public void refresh(Voc[] voc) {
