@@ -80,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
 
         // Show toolbar
         setSupportActionBar(toolbar);
-        // Disabled back button on activity_main
+        // Disabled back button_rectangle on activity_main
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         // Setup viewPager and tab layout
