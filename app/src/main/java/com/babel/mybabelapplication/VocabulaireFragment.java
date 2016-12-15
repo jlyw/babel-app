@@ -54,11 +54,9 @@ public class VocabulaireFragment extends Fragment{
 
         vocListListView.setAdapter(vocListAdapter);
 
-        List<VocList> allVocLists = vocListDao.getAllVocLists();
+        final List<VocList> allVocLists = vocListDao.getAllVocLists();
 
         vocListAdapter.refresh(allVocLists);
-        //vocListAdapter.refresh(allVocLists);
-
 
         vocListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

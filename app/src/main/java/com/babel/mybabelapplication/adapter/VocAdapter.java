@@ -1,6 +1,7 @@
 package com.babel.mybabelapplication.adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,32 +32,54 @@ public class VocAdapter extends BaseAdapter {
     private VocListDAO vocListDao;
 
     protected class VocViewHolder {
-        @BindView(R.id.textView)
-        protected TextView textViewVocListName;
+        @BindView(R.id.voc_french_word)
+        protected TextView textViewFrennchWord;
 
-        @BindView(R.id.textView2)
-        protected TextView textViewVocListNbWord;
+        @BindView(R.id.voc_english_word)
+        protected TextView textViewEnglishWord;
 
         @BindView(R.id.row_image_view)
-        protected ImageView imageViewVocListImage;
+        protected ImageView imageViewWordProgress;
+
+        @BindView(R.id.voc_sound_icon)
+        protected ImageView imageViewListenWord;
 
         public VocViewHolder(View vocListRowView) {
             ButterKnife.bind(this, vocListRowView);
         }
 
-        public void setVoc(Voc voc) {
+        public void setVoc(final Voc voc) {
             vocDAO = new VocDAO();
             vocListDao = new VocListDAO();
 
             List<Voc> allVocs = vocDAO.getAllVocs();
 
-            String ImageUri = "@drawable/image-chouette";
+            // Maitrise du mot
+            int grade = R.drawable.grade_0;
+            switch(voc.getGrade()) {
+                case 0:
+                    grade = R.drawable.grade_0;
+                    break;
+                case 1:
+                    grade = R.drawable.grade_1;
+                    break;
+                case 2:
+                    grade = R.drawable.grade_2;
+                    break;
+            }
 
+            imageViewWordProgress.setImageResource(grade);
+            imageViewListenWord.setImageResource(R.drawable.sound_icon);
+            textViewFrennchWord.setText(voc.getFrench());
+            textViewEnglishWord.setText(voc.getEnglish());
 
-            //List<Voc> allVocOfAList = vocDAO.getAllVocsOffOneList(allVocLists.get(2).getId());
-            imageViewVocListImage.setImageResource(R.drawable.image_chouette);
-            textViewVocListName.setText(voc.getFrench());
-            textViewVocListNbWord.setText(voc.getEnglish());
+            imageViewListenWord.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println("========= FILE VocAdapter =========");
+                    System.out.println("========= ON CLICK SOUND BUTTON : id n°" + voc.getId() +" =========");
+                }
+            });
         }
     }
 

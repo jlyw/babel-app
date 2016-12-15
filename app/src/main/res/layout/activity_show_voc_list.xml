@@ -7,7 +7,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context="com.babel.mybabelapplication.ShowVocListActivity">
 
-<!-- Content -->
+    <!-- Content -->
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,31 +21,55 @@ tools:context="com.babel.mybabelapplication.ShowVocListActivity">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exo sans son"
+        android:text="Exercice sans son"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:background="@drawable/button_rectangle"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="#eb5e58"
+        android:textSize="15dp"
         android:id="@+id/write_exo_voc_list_button"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exo avec son"
-        android:layout_below="@+id/write_exo_voc_list_button"
-        android:id="@+id/sound_exo_voc_list_button"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editer list voc"
+        android:text="Editer la liste"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/button_rectangle"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="#eb5e58"
+        android:textSize="15dp"
         android:id="@+id/edit_voc_list_button"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Supprimer list voc"
+        android:text="Exercice  avec son"
+        android:layout_below="@+id/write_exo_voc_list_button"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_rectangle"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="#eb5e58"
+        android:textSize="15dp"
+        android:id="@+id/sound_exo_voc_list_button"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Effacer la liste"
         android:layout_alignParentRight="true"
+        android:background="@drawable/button_rectangle"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="#eb5e58"
+        android:textSize="15dp"
         android:layout_below="@+id/edit_voc_list_button"
         android:id="@+id/delete_voc_list_button"/>
 
@@ -83,7 +107,9 @@ tools:context="com.babel.mybabelapplication.ShowVocListActivity">
         android:layout_below="@id/see_english_button_list_voc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/list_view_voc"></ListView>
+        android:id="@+id/list_view_voc"
+        android:divider="@color/row_divider"
+        android:dividerHeight="2px"></ListView>
 
 
 </RelativeLayout>
