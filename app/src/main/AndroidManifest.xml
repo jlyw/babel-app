@@ -23,7 +23,10 @@
             android:label="@string/title_activity_profile" />
         <activity
             android:name=".CreateListActivity"
-            android:label="@string/title_activity_create_list"></activity>
+            android:label="@string/title_activity_create_list" />
+        <activity
+            android:name=".ShowVocListActivity"
+            android:label="@string/label_show_voc_list_activity" />
     </application>
 
 </manifest>
