@@ -7,8 +7,27 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.babel.mybabelapplication.adapter.VocListAdapter;
+import com.babel.mybabelapplication.dao.VocListDAO;
+import com.babel.mybabelapplication.model.VocList;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class VocabulaireFragment extends Fragment{
+    //Context context;
+
+    //@BindView(R.id.VocListListView)
+    protected ListView vocListListView;
+
+    protected VocListAdapter vocListAdapter;
+
+    VocListDAO vocListDao = new VocListDAO();
 
     public VocabulaireFragment() {
         // Required empty public constructor
@@ -22,8 +41,21 @@ public class VocabulaireFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_vocabulaire, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_vocabulaire, container, false);
+
+        vocListListView = (ListView) rootView.findViewById(R.id.VocListListView);
+
+        //context = container.getContext();
+
+        vocListAdapter = new VocListAdapter(getActivity());
+
+        vocListListView.setAdapter(vocListAdapter);
+
+        List<VocList> allVocLists = vocListDao.getAllVocLists();
+
+        vocListAdapter.refresh(allVocLists);
+        //vocListAdapter.refresh(allVocLists);
+        return rootView;
     }
 
 }
