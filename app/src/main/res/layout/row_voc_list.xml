@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/row_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="80dp"
+        android:maxWidth="80dp"
+        android:minHeight="80dp"
+        android:maxHeight="80dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/row_list_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nom de la liste"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@+id/row_image_view"
+        android:textStyle="bold"
+        android:textColor="#010000"
+        android:textSize="19sp"/>
+
+    <TextView
+        android:id="@+id/row_number_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="112 mots"
+        android:layout_alignStart="@id/row_list_name"
+        android:layout_below="@+id/row_list_name"
+        android:layout_marginBottom="5dp"
+        android:textStyle="normal"
+        android:textColor="#010000"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/row_grade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="93% de réussite sur les exercices"
+        android:layout_alignStart="@+id/row_list_name"
+        android:layout_below="@+id/row_number_word"
+        android:textStyle="normal"
+        android:textColor="#d4413b"
+        android:textSize="13sp"/>
+</RelativeLayout>
