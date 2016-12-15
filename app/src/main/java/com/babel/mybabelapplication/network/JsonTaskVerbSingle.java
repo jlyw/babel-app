@@ -35,7 +35,7 @@ public class JsonTaskVerbSingle extends AsyncTask<String, String, Verb> {
         BufferedReader reader = null;
 
         try {
-            URL url = new URL(params[0]); // new URL(UrlBuilder.getVerbUrl("sing"));
+            URL url = new URL(params[0]);
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
             InputStream stream = connection.getInputStream();
@@ -49,28 +49,10 @@ public class JsonTaskVerbSingle extends AsyncTask<String, String, Verb> {
             String finalJson = buffer.toString();
             // make a JSONObject
             JSONObject parentObject = new JSONObject(finalJson);
-            // get the parent array
-//            JSONArray parentArray = parentObject.getJSONArray("data");
 
-            // need to create a list for all offers
-//            List<OfferModel> offerModelList = new ArrayList<>();
-
-            // because this is ONE offer
-//            for (int i = 0; i<parentArray.length(); i++) {
-//                JSONObject finalObject = parentArray.getJSONObject(i);
-
-
-//                verb.setId(finalObject.getString("_id"));
-                verb.setInfinitive(parentObject.getString("verb"));
-                verb.setSimplePast(parentObject.getJSONObject("tenses").getJSONObject("2").getJSONArray("forms").getJSONObject(0).getString("form"));
-                verb.setPastParticiple(parentObject.getJSONObject("tenses").getJSONObject("22").getJSONArray("forms").getJSONObject(0).getString("form"));
-//                verb.setName(finalObject.getString("name"));
-//                verb.setSurname(finalObject.getString("surname"));
-//                verb.setPhone(finalObject.getString("phone"));
-//                verb.setLocalisation(finalObject.getString("localisation"));
-//                verb.setDescription(finalObject.getString("description"));
-//                verb.setImage(Uri.parse(finalObject.getString("avatar")));
-//            }
+            verb.setInfinitive(parentObject.getString("verb"));
+            verb.setSimplePast(parentObject.getJSONObject("tenses").getJSONObject("2").getJSONArray("forms").getJSONObject(0).getString("form"));
+            verb.setPastParticiple(parentObject.getJSONObject("tenses").getJSONObject("22").getJSONArray("forms").getJSONObject(0).getString("form"));
             return verb;
 
         } catch (MalformedURLException e) {

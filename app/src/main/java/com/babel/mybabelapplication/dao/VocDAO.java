@@ -7,6 +7,7 @@ import com.babel.mybabelapplication.model.VerbList;
 import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
 
+import java.util.Collections;
 import java.util.List;
 
 import io.realm.Case;
@@ -33,6 +34,14 @@ public class VocDAO {
     public List<Voc> getAllVocsOffOneList(String listId) {
         VocList vocList = realm.where(VocList.class).equalTo("id", listId).findFirst();
         return vocList.getVocs();
+    }
+
+    // randomise une liste de voc
+    public List<Voc> randomAllVocsOffOneList(List<Voc> vocs) {
+        realm.beginTransaction();
+        Collections.shuffle(vocs);
+        realm.commitTransaction();
+        return vocs;
     }
 
     // ajouter un voc
