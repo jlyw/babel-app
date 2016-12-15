@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
@@ -18,16 +19,15 @@ import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
-import java.util.Random;
-import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.Realm;
 
-public class WriteExoVocListActivity extends ActionBarActivity {
+public class SoundExoVocListActivity extends ActionBarActivity {
     private Toolbar toolbar;
     private String listVocId;
     private VocListDAO vocListDAO;
@@ -40,9 +40,6 @@ public class WriteExoVocListActivity extends ActionBarActivity {
     private Intent intent;
     private int[] listOfSuccess;
     private Voc voc;
-
-    @BindView(R.id.text_view_to_trad)
-    protected TextView textViewToTrad;
 
     @BindView(R.id.text_view_result)
     protected TextView textViewResult;
@@ -58,11 +55,12 @@ public class WriteExoVocListActivity extends ActionBarActivity {
 
     @BindView(R.id.next_voc_exo_button)
     protected Button buttonNextExo;
+    private TextToSpeech ttobj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_write_exo_voc_list);
+        setContentView(R.layout.activity_sound_exo_voc_list);
 
         Realm.init(this);
         ButterKnife.bind(this);
@@ -87,11 +85,16 @@ public class WriteExoVocListActivity extends ActionBarActivity {
 
         toolbar.setTitle(vocList.getName());
 
-        textViewToTrad.setText(isFrench ? vocs.get(listOfIndex[index]).getFrench() : vocs.get(listOfIndex[index]).getEnglish());
-        /*textViewIndexing.setText(String.valueOf(index + 1) + " sur " + vocs.size() + "       " +
-                String.valueOf(listOfSuccess[0]) + " " + String.valueOf(listOfSuccess[1]) + " " + String.valueOf(listOfSuccess[2]) +
-                "       " + String.valueOf(vocs.get(listOfIndex[index]).getGrade())
-        );*/
+        ttobj = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    ttobj.setLanguage(isFrench ? Locale.FRENCH : Locale.ENGLISH);
+
+                    ttobj.speak(isFrench ? vocs.get(listOfIndex[index]).getFrench() : vocs.get(listOfIndex[index]).getEnglish(), TextToSpeech.QUEUE_FLUSH, null);
+                }
+            }
+        });
     }
 
     @OnClick(R.id.valid_voc_exo_button)
@@ -136,11 +139,11 @@ public class WriteExoVocListActivity extends ActionBarActivity {
             intent.putExtra("LIST_VOC_ID", listVocId);
             intent.putExtra("RANDOM_INDEXING", listOfIndex);
             intent.putExtra("SUCCESS_LIST", listOfSuccess);
-            intent.putExtra("EXO_TYPE", "VOC_WRITE");
+            intent.putExtra("EXO_TYPE", "VOC_SOUND");
 
             startActivity(intent);
         } else {
-            intent = new Intent(getApplicationContext(), WriteExoVocListActivity.class);
+            intent = new Intent(getApplicationContext(), SoundExoVocListActivity.class);
 
             intent.putExtra("LIST_VOC_ID", listVocId);
             intent.putExtra("RANDOM_INDEXING", listOfIndex);
@@ -149,6 +152,11 @@ public class WriteExoVocListActivity extends ActionBarActivity {
 
             startActivity(intent);
         }
+    }
+
+    @OnClick(R.id.button_sound_again)
+    public void soundAgain() {
+        ttobj.speak(isFrench ? vocs.get(listOfIndex[index]).getFrench() : vocs.get(listOfIndex[index]).getEnglish(), TextToSpeech.QUEUE_FLUSH, null);
     }
 
     private void showAlert(int title, int message) {

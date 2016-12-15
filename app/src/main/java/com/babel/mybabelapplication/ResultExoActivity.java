@@ -102,8 +102,12 @@ public class ResultExoActivity extends ActionBarActivity {
 
     @OnClick(R.id.button_retry_exo)
     public void RetryExo() {
-        if(Objects.equals(exoType, "voc")) {
-            intent = new Intent(getApplicationContext(), WriteExoVocListActivity.class);
+        if(Objects.equals(exoType, "VOC_WRITE") || Objects.equals(exoType, "VOC_SOUND")) {
+            if(Objects.equals(exoType, "VOC_WRITE")) {
+                intent = new Intent(getApplicationContext(), WriteExoVocListActivity.class);
+            } else {
+                intent = new Intent(getApplicationContext(), SoundExoVocListActivity.class);
+            }
 
             int[] listOfIndex = new int[vocs.size()];
             for (int i = 0; i < vocs.size(); ++i) {

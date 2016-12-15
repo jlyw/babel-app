@@ -132,15 +132,47 @@ public class ShowVocListActivity extends ActionBarActivity {
         for (int i = 0; i < vocs.size(); ++i) {
             listOfSuccess[i] = -1;
         }
-//        englishTextListVoc.setText(String.valueOf(listOfIndex[0]));
 
         intent.putExtra("LIST_VOC_ID", listVocId);
-
-//        intent.putExtra("ALL_VOC", (Serializable) vocs);
         intent.putExtra("RANDOM_INDEXING", listOfIndex);
         intent.putExtra("SUCCESS_LIST", listOfSuccess);
-
         intent.putExtra("INDEX", 0);
+
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.sound_exo_voc_list_button)
+    public void onStartListVocSoundExo() {
+        if(vocs.size() == 0) {
+            return;
+        }
+
+        intent = new Intent(getApplicationContext(), SoundExoVocListActivity.class);
+
+        int[] listOfIndex = new int[vocs.size()];
+        for (int i = 0; i < vocs.size(); ++i) {
+            listOfIndex[i] = i;
+        }
+        int index, temp;
+        Random random = new Random();
+        for (int i = listOfIndex.length - 1; i > 0; i--)
+        {
+            index = random.nextInt(i + 1);
+            temp = listOfIndex[index];
+            listOfIndex[index] = listOfIndex[i];
+            listOfIndex[i] = temp;
+        }
+
+        int[] listOfSuccess = new int[vocs.size()];
+        for (int i = 0; i < vocs.size(); ++i) {
+            listOfSuccess[i] = -1;
+        }
+
+        intent.putExtra("LIST_VOC_ID", listVocId);
+        intent.putExtra("RANDOM_INDEXING", listOfIndex);
+        intent.putExtra("SUCCESS_LIST", listOfSuccess);
+        intent.putExtra("INDEX", 0);
+
         startActivity(intent);
     }
 }
