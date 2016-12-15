@@ -17,4 +17,5 @@
     <string name="placeholder_create_voc_en">Anglais</string>
     <string name="error_message_voc_create">Veuillez remplir les deux champs</string>
     <string name="error_title_voc_create">Attention !</string>
+    <string name="label_show_voc_list_activity">Bienvenue sur votre liste</string>
 </resources>
