@@ -1,11 +1,13 @@
 package com.babel.mybabelapplication;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -120,8 +122,7 @@ public class ShowVocListActivity extends ActionBarActivity {
         }
         int index, temp;
         Random random = new Random();
-        for (int i = listOfIndex.length - 1; i > 0; i--)
-        {
+        for (int i = listOfIndex.length - 1; i > 0; i--) {
             index = random.nextInt(i + 1);
             temp = listOfIndex[index];
             listOfIndex[index] = listOfIndex[i];
@@ -174,5 +175,31 @@ public class ShowVocListActivity extends ActionBarActivity {
         intent.putExtra("INDEX", 0);
 
         startActivity(intent);
+    }
+
+    @OnClick(R.id.delete_voc_list_button)
+    public void deleteVocList() {
+        showAlertForDelete(R.string.error_title_voc_create, R.string.are_you_sure_delete_list);
+    }
+
+    private void showAlertForDelete(int title, int message) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    vocListDAO.deleteVocList(vocList);
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            })
+            .setNegativeButton("annuler", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            }).create();
+        alertDialog.show();
     }
 }
