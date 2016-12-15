@@ -161,7 +161,6 @@ public class MainActivity extends ActionBarActivity {
                 testTextView.setText(allVocOfAList.get(0).getEnglish());
             } catch (IndexOutOfBoundsException ignored) {
             }
-
         }
     };
 

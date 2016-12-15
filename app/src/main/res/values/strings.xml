@@ -15,4 +15,6 @@
     <string name="error_title_list_name_empty">Création de liste</string>
     <string name="placeholder_create_voc_fr">Français</string>
     <string name="placeholder_create_voc_en">Anglais</string>
+    <string name="error_message_voc_create">Veuillez remplir les deux champs</string>
+    <string name="error_title_voc_create">Attention !</string>
 </resources>

@@ -10,7 +10,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.babel.mybabelapplication.dao.VerbListDAO;
@@ -19,6 +21,9 @@ import com.babel.mybabelapplication.dao.VocListDAO;
 import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -33,6 +38,9 @@ public class CreateListActivity extends ActionBarActivity {
     private VocListDAO vocListDAO;
     private Voc voc;
     private VocDAO vocDAO;
+    private ArrayList<Voc> vocs;
+    private ArrayList<String> vocsInString;
+    private ArrayAdapter<String> vocsAdapter;
 
     @BindView(R.id.edit_text_voc_list_name)
     protected EditText editTextVocListName;
@@ -42,6 +50,9 @@ public class CreateListActivity extends ActionBarActivity {
 
     @BindView(R.id.edit_text_voc_english)
     protected EditText editTextVocEnglish;
+
+    @BindView(R.id.list_view_create_voc)
+    protected ListView listViewVocs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,32 +96,53 @@ public class CreateListActivity extends ActionBarActivity {
             }
         );
 
-        voc = new Voc();
+        vocs = new ArrayList<>();
+        vocsInString = new ArrayList<>();
+        vocsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, vocsInString);
+        listViewVocs.setAdapter(vocsAdapter);
+
         vocDAO = new VocDAO();
         vocList = new VocList();
         vocListDAO = new VocListDAO();
     }
 
-    @OnClick(R.id.create_voc_list_button)
-    public void onCreateVocList() {
-        String vocListName = editTextVocListName.getText().toString();
+    @OnClick(R.id.create_voc_button)
+    public void onCreateVoc() {
         String vocFrench = editTextVocFrench.getText().toString();
         String vocEnglish = editTextVocEnglish.getText().toString();
 
-        if(vocListName.isEmpty()) {
-            showAlert(R.string.error_title_list_name_empty, R.string.error_message_list_name_empty);
+        if(vocFrench.isEmpty() || vocEnglish.isEmpty()) {
+            showAlert(R.string.error_title_voc_create, R.string.error_message_voc_create);
         } else {
+            voc = new Voc();
             voc.setFrench(vocFrench);
             voc.setEnglish(vocEnglish);
             voc.setId(UUID.randomUUID().toString());
             voc.setGrade(0);
             vocDAO.addVoc(voc);
 
+            vocs.add(voc);
+            vocsAdapter.add(voc.getFrench() + "<=>" + voc.getEnglish());
+
+            editTextVocFrench.setText("");
+            editTextVocEnglish.setText("");
+        }
+    }
+
+    @OnClick(R.id.create_voc_list_button)
+    public void onCreateVocList() {
+        String vocListName = editTextVocListName.getText().toString();
+
+        if(vocListName.isEmpty()) {
+            showAlert(R.string.error_title_list_name_empty, R.string.error_message_list_name_empty);
+        } else {
             vocList.setName(vocListName);
             vocList.setId(UUID.randomUUID().toString());
             vocListDAO.addVocList(vocList);
 
-            vocDAO.addVocToVocListId(voc, vocList.getId());
+            for (Voc item : vocs) {
+                vocDAO.addVocToVocListId(item, vocList.getId());
+            }
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
