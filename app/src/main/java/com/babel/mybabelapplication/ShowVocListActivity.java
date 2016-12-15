@@ -108,7 +108,9 @@ public class ShowVocListActivity extends ActionBarActivity {
 
     @OnClick(R.id.write_exo_voc_list_button)
     public void onStartListVocWriteExo() {
-//        vocs = vocDAO.randomAllVocsOffOneList(vocs);
+        if(vocs.size() == 0) {
+            return;
+        }
 
         intent = new Intent(getApplicationContext(), WriteExoVocListActivity.class);
 
@@ -125,12 +127,18 @@ public class ShowVocListActivity extends ActionBarActivity {
             listOfIndex[index] = listOfIndex[i];
             listOfIndex[i] = temp;
         }
+
+        int[] listOfSuccess = new int[vocs.size()];
+        for (int i = 0; i < vocs.size(); ++i) {
+            listOfSuccess[i] = -1;
+        }
 //        englishTextListVoc.setText(String.valueOf(listOfIndex[0]));
 
         intent.putExtra("LIST_VOC_ID", listVocId);
 
 //        intent.putExtra("ALL_VOC", (Serializable) vocs);
         intent.putExtra("RANDOM_INDEXING", listOfIndex);
+        intent.putExtra("SUCCESS_LIST", listOfSuccess);
 
         intent.putExtra("INDEX", 0);
         startActivity(intent);

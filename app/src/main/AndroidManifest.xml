@@ -27,7 +27,12 @@
         <activity
             android:name=".ShowVocListActivity"
             android:label="@string/label_show_voc_list_activity" />
-        <activity android:name=".WriteExoVocListActivity"></activity>
+        <activity
+            android:name=".WriteExoVocListActivity"
+            android:label="@string/label_write_exo_voc_list" />
+        <activity
+            android:name=".ResultExoActivity"
+            android:label="@string/label_result_exo_activity" />
     </application>
 
 </manifest>
