@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -46,6 +47,12 @@ public class ShowVocListActivity extends ActionBarActivity {
 
     @BindView(R.id.english_text_list_voc)
     protected TextView englishTextListVoc;
+
+    @BindView(R.id.icon_hide_french_words)
+    protected ImageView iconHideFrenchWords;
+
+    @BindView(R.id.icon_hide_english_words)
+    protected ImageView iconHideEnglishWords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +111,9 @@ public class ShowVocListActivity extends ActionBarActivity {
 
         vocAdapter = new VocAdapter(this);
         listViewVoc.setAdapter(vocAdapter);
+
+        iconHideFrenchWords.setImageResource(R.drawable.hide_words);
+        iconHideEnglishWords.setImageResource(R.drawable.hide_words);
 
         vocAdapter.refresh(vocs);
     }
