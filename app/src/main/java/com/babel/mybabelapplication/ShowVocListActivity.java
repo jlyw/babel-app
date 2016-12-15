@@ -202,4 +202,11 @@ public class ShowVocListActivity extends ActionBarActivity {
             }).create();
         alertDialog.show();
     }
+
+    @OnClick(R.id.edit_voc_list_button)
+    public void editVocList() {
+        intent = new Intent(getApplicationContext(), EditListActivity.class);
+        intent.putExtra("LIST_VOC_ID", listVocId);
+        startActivity(intent);
+    }
 }
