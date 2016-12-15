@@ -33,6 +33,9 @@
         <activity
             android:name=".ResultExoActivity"
             android:label="@string/label_result_exo_activity" />
+        <activity
+            android:name=".SoundExoVocListActivity"
+            android:label="@string/label_write_exo_voc_list"/>
     </application>
 
 </manifest>
