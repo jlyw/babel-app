@@ -20,4 +20,5 @@
     <string name="label_show_voc_list_activity">Bienvenue sur votre liste</string>
     <string name="title_warning_exo_voc">Attention</string>
     <string name="message_warning_exo_voc">Votre réponse est vide !</string>
+    <string name="label_write_exo_voc_list">Exercice de vocabulaire</string>
 </resources>

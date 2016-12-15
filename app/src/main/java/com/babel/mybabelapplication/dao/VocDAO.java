@@ -64,10 +64,25 @@ public class VocDAO {
         realm.copyToRealmOrUpdate(voc);
         realm.commitTransaction();
     }
-
     public void updateVocGrade(Voc voc, Integer grade) {
         realm.beginTransaction();
         voc.setGrade(grade);
+        realm.copyToRealmOrUpdate(voc);
+        realm.commitTransaction();
+    }
+    public void upVocGrade(Voc voc) {
+        realm.beginTransaction();
+        if(voc.getGrade() < 2) {
+            voc.setGrade(voc.getGrade()+1);
+        }
+        realm.copyToRealmOrUpdate(voc);
+        realm.commitTransaction();
+    }
+    public void downVocGrade(Voc voc) {
+        realm.beginTransaction();
+        if(voc.getGrade() > 0) {
+            voc.setGrade(voc.getGrade()-1);
+        }
         realm.copyToRealmOrUpdate(voc);
         realm.commitTransaction();
     }
