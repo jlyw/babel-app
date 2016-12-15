@@ -22,4 +22,6 @@
     <string name="message_warning_exo_voc">Votre réponse est vide !</string>
     <string name="label_write_exo_voc_list">Exercice de vocabulaire</string>
     <string name="label_result_exo_activity">Résultat de l\'exercice</string>
+    <string name="are_you_sure_delete_list">Cela supprimera définitevement votre liste, êtes-vous sûr(e) ?</string>
+    <string name="edit_button">EDITER</string>
 </resources>
