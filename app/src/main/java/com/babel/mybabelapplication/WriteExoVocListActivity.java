@@ -18,6 +18,7 @@ import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 
@@ -39,6 +40,9 @@ public class WriteExoVocListActivity extends ActionBarActivity {
     @BindView(R.id.text_view_to_trad)
     protected TextView textViewToTrad;
 
+    @BindView(R.id.text_view_result)
+    protected TextView textViewResult;
+
     @BindView(R.id.edit_text_answer)
     protected EditText textEditToTrad;
 
@@ -48,6 +52,7 @@ public class WriteExoVocListActivity extends ActionBarActivity {
     @BindView(R.id.next_voc_exo_button)
     protected Button buttonNextExo;
     private boolean isFrench;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,13 +86,37 @@ public class WriteExoVocListActivity extends ActionBarActivity {
 
     @OnClick(R.id.valid_voc_exo_button)
     public void validVocWriteExo() {
-        String answer = textEditToTrad.getText().toString();
+        String answer = textEditToTrad.getText().toString().toLowerCase();
         if(answer.isEmpty()) {
             showAlert(R.string.title_warning_exo_voc, R.string.message_warning_exo_voc);
         } else {
             buttonValidAnswer.setVisibility(View.GONE);
             buttonNextExo.setVisibility(View.VISIBLE);
+
+            if(isFrench) {
+                if(Objects.equals(vocs.get(listOfIndex[index]).getEnglish().toLowerCase(), answer)) {
+                    textViewResult.setText("Bien joué !");
+                } else {
+                    textViewResult.setText("Dommage ! La bonne réponse était " + vocs.get(listOfIndex[index]).getEnglish());
+                }
+            } else {
+                if(Objects.equals(vocs.get(listOfIndex[index]).getFrench().toLowerCase(), answer)) {
+                    textViewResult.setText("Bien joué !");
+                } else {
+                    textViewResult.setText("Dommage ! La bonne réponse était " + vocs.get(listOfIndex[index]).getFrench());
+                }
+            }
         }
+    }
+
+    @OnClick(R.id.next_voc_exo_button)
+    public void nextVocExo() {
+        intent = new Intent(getApplicationContext(), WriteExoVocListActivity.class);
+
+        intent.putExtra("LIST_VOC_ID", listVocId);
+        intent.putExtra("RANDOM_INDEXING", listOfIndex);
+        intent.putExtra("INDEX", index+1);
+        startActivity(intent);
     }
 
     private void showAlert(int title, int message) {
