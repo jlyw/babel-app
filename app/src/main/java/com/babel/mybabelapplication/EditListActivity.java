@@ -136,13 +136,13 @@ public class EditListActivity extends ActionBarActivity {
     @OnClick(R.id.create_voc_button)
     public void onCreateVoc() {
         String vocFrench = editTextVocFrench.getText().toString().toLowerCase();
-        vocFrench = vocFrench.substring(0, 1).toUpperCase() + vocFrench.substring(1);
         String vocEnglish = editTextVocEnglish.getText().toString().toLowerCase();
-        vocEnglish = vocEnglish.substring(0, 1).toUpperCase() + vocEnglish.substring(1);
 
         if(vocFrench.isEmpty() || vocEnglish.isEmpty()) {
             showAlert(R.string.error_title_voc_create, R.string.error_message_voc_create);
         } else {
+            vocEnglish = vocEnglish.substring(0, 1).toUpperCase() + vocEnglish.substring(1);
+            vocFrench = vocFrench.substring(0, 1).toUpperCase() + vocFrench.substring(1);
             voc = new Voc();
             voc.setFrench(vocFrench);
             voc.setEnglish(vocEnglish);

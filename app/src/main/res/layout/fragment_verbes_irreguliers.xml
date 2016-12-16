@@ -4,10 +4,14 @@
     android:layout_height="match_parent"
     tools:context="com.babel.mybabelapplication.VerbesIrreguliersFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="FRAGMENT VERBES IRREGULIERS" />
+    <ListView
+        android:id="@+id/VocListListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:divider="@color/row_divider"
+        android:paddingBottom="10dp"
+        android:dividerHeight="2px"
+        android:layout_marginBottom="100dp"
+        android:layout_gravity="start"></ListView>
 
 </FrameLayout>

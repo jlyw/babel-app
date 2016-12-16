@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/activity_main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.babel.mybabelapplication.EditListVerbActivity">
+
+<!-- Content -->
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_marginTop="50dp"
+    android:layout_marginBottom="60dp">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="@string/create_liste_name_placeholder"
+        android:textColorHint="@color/bottomNavColor"
+        android:textColor="#eb5e58"
+        android:id="@+id/edit_text_voc_list_name"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_rectangle"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="#eb5e58"
+        android:textSize="18sp"
+        android:id="@+id/edit_voc_list_button"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="295dp"
+        android:layout_below="@+id/edit_text_voc_list_name"
+        android:id="@+id/list_view_create_voc"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/edit_text_voc_english"
+            android:hint="@string/placeholder_create_voc_fr"
+            android:textColorHint="@color/bottomNavColor"
+            android:textColor="#eb5e58"
+            android:id="@+id/edit_text_voc_french"
+            android:layout_weight=".4"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/placeholder_create_voc_en"
+            android:textColorHint="@color/bottomNavColor"
+            android:textColor="#eb5e58"
+            android:id="@+id/edit_text_voc_english"
+            android:layout_weight=".4"/>
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="+"
+            android:textSize="40sp"
+            android:textColor="#eb5e58"
+            android:background="@drawable/button_circle"
+            android:id="@+id/create_voc_button"/>
+    </LinearLayout>
+</RelativeLayout>
+
+<!-- Bottom nav -->
+<android.support.design.widget.BottomNavigationView
+    android:id="@+id/bottom_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    app:itemBackground="@color/bottomNavColor"
+    app:itemIconTint="@drawable/nav_item_color_state"
+    app:itemTextColor="@drawable/nav_item_color_state"
+    app:menu="@menu/bottom_navigation_main" />
+
+<!-- Toolbar/Actionbar on top of screen -->
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:title="@string/title_activity_profile"/>
+    </android.support.design.widget.AppBarLayout>
+</android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>
