@@ -23,6 +23,7 @@ import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.VerbList;
 import com.babel.mybabelapplication.network.JsonTaskVerbSingle;
 import com.babel.mybabelapplication.network.UrlBuilder;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,10 +86,13 @@ public class EditListVerbActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
         // Bottom navigation
-        final BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
+        BottomNavigationViewEx bnve = (BottomNavigationViewEx) findViewById(R.id.bnve);
+        bnve.enableAnimation(true);
+        bnve.setTextVisibility(true);
+        bnve.setIconVisibility(true);
+        bnve.setCurrentItem(2);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(
+        bnve.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

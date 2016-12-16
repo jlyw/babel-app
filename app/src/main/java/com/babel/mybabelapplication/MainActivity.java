@@ -30,6 +30,7 @@ import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
 import com.babel.mybabelapplication.network.JsonTaskVerbSingle;
 import com.babel.mybabelapplication.network.UrlBuilder;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,10 +93,13 @@ public class MainActivity extends ActionBarActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         // Bottom navigation
-        final BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
+        BottomNavigationViewEx bnve = (BottomNavigationViewEx) findViewById(R.id.bnve);
+        bnve.enableAnimation(true);
+        bnve.setTextVisibility(true);
+        bnve.setIconVisibility(true);
+        bnve.setCurrentItem(0);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(
+        bnve.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -125,20 +129,20 @@ public class MainActivity extends ActionBarActivity {
         );;
 
         // Create a user if no user present
-//        userDao = new UserDAO();
-//        if(!userDao.userIsPresentInRealm()) {
-//            user = new User();
-//            user.setId("USER_ID");
-//            user.setAllAnswer(0);
-//            user.setGoodAnswer(0);
-//            user.setExerciceDone(0);
-//            user.setCreatedList(0);
-//
-//            userDao.addUser(user);
-//
+        userDao = new UserDAO();
+        if(!userDao.userIsPresentInRealm()) {
+            user = new User();
+            user.setId("USER_ID");
+            user.setAllAnswer(0);
+            user.setGoodAnswer(0);
+            user.setExerciceDone(0);
+            user.setCreatedList(0);
+
+            userDao.addUser(user);
+
             intent = new Intent(getApplicationContext(), OnboardingActivity.class);
             startActivity(intent);
-//        }
+        }
 
         verbDao = new VerbDAO();
         verbListDao = new VerbListDAO();
