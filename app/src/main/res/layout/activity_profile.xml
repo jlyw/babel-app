@@ -19,13 +19,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World! This is profile activity" />
+            android:text="Hello World! This is profile activity"
+            android:id="@+id/text_view_profile"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/go_to_voc_list"
-            android:text="GO TO MY LIST"/>
     </RelativeLayout>
 
     <!-- Bottom nav -->

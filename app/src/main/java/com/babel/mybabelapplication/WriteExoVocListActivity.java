@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.babel.mybabelapplication.dao.UserDAO;
 import com.babel.mybabelapplication.dao.VocDAO;
 import com.babel.mybabelapplication.dao.VocListDAO;
 import com.babel.mybabelapplication.model.Voc;
@@ -42,6 +43,7 @@ public class WriteExoVocListActivity extends ActionBarActivity {
     private Intent intent;
     private int[] listOfSuccess;
     private Voc voc;
+    private UserDAO userDAO;
 
     @BindView(R.id.text_view_to_trad)
     protected TextView textViewToTrad;
@@ -78,6 +80,7 @@ public class WriteExoVocListActivity extends ActionBarActivity {
 
         vocListDAO = new VocListDAO();
         vocDAO = new VocDAO();
+        userDAO = new UserDAO();
 
         listVocId = getIntent().getStringExtra("LIST_VOC_ID");
         index = getIntent().getIntExtra("INDEX", 0);
@@ -96,6 +99,13 @@ public class WriteExoVocListActivity extends ActionBarActivity {
         );*/
     }
 
+    @Override
+    public void onBackPressed() {
+        intent = new Intent(getApplicationContext(), ShowVocListActivity.class);
+        intent.putExtra("LIST_VOC_ID", listVocId);
+        startActivity(intent);
+    }
+
     @OnClick(R.id.valid_voc_exo_button)
     public void validVocWriteExo() {
         String answer = textEditToTrad.getText().toString().toLowerCase();
@@ -110,6 +120,7 @@ public class WriteExoVocListActivity extends ActionBarActivity {
                 if(Objects.equals(vocs.get(listOfIndex[index]).getEnglish().toLowerCase(), answer)) {
                     textViewResult.setTextColor(Color.parseColor("#85c35d"));
                     textEditToTrad.setBackgroundResource(R.drawable.border_bottom_success);
+                    userDAO.userGoodAnswer();
                     textViewResult.setText("Bien joué !");
 
                     listOfSuccess[index] = 1;
@@ -117,16 +128,22 @@ public class WriteExoVocListActivity extends ActionBarActivity {
                 } else {
                     textEditToTrad.setBackgroundResource(R.drawable.border_bottom_error);
                     textViewResult.setText("Dommage !\nLa bonne réponse était " + vocs.get(listOfIndex[index]).getEnglish());
+                    userDAO.userBadAnswer();
                     listOfSuccess[index] = 0;
                     vocDAO.downVocGrade(voc);
                 }
             } else {
                 if(Objects.equals(vocs.get(listOfIndex[index]).getFrench().toLowerCase(), answer)) {
+                    userDAO.userGoodAnswer();
+                    textViewResult.setTextColor(Color.parseColor("#85c35d"));
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_success);
                     textViewResult.setText("Bien joué !");
                     listOfSuccess[index] = 1;
                     vocDAO.upVocGrade(voc);
                 } else {
-                    textViewResult.setText("Dommage ! La bonne réponse était " + vocs.get(listOfIndex[index]).getFrench());
+                    userDAO.userBadAnswer();
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_error);
+                    textViewResult.setText("Dommage !\nLa bonne réponse était " + vocs.get(listOfIndex[index]).getEnglish());
                     listOfSuccess[index] = 0;
                     vocDAO.downVocGrade(voc);
                 }
@@ -137,6 +154,7 @@ public class WriteExoVocListActivity extends ActionBarActivity {
     @OnClick(R.id.next_voc_exo_button)
     public void nextVocExo() {
         if(index+1 == vocs.size()) {
+            userDAO.upUserExerciceDone();
             intent = new Intent(getApplicationContext(), ResultExoActivity.class);
 
             intent.putExtra("LIST_VOC_ID", listVocId);

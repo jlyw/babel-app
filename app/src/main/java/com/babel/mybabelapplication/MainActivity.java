@@ -18,10 +18,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.babel.mybabelapplication.dao.UserDAO;
 import com.babel.mybabelapplication.dao.VerbDAO;
 import com.babel.mybabelapplication.dao.VerbListDAO;
 import com.babel.mybabelapplication.dao.VocDAO;
 import com.babel.mybabelapplication.dao.VocListDAO;
+import com.babel.mybabelapplication.model.User;
 import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.VerbList;
 import com.babel.mybabelapplication.model.Voc;
@@ -47,6 +49,8 @@ public class MainActivity extends ActionBarActivity {
     private VerbListDAO verbListDao;
     private VocDAO vocDAO;
     private VocListDAO vocListDao;
+    private UserDAO userDao;
+    private User user;
 
     // Bind elements
     @BindView(R.id.test_text_view)
@@ -119,6 +123,25 @@ public class MainActivity extends ActionBarActivity {
                     }
                 }
         );;
+
+        // Create a user if no user present
+        userDao = new UserDAO();
+        if(userDao.userIsPresentInRealm()) {
+            System.out.println("-------- User déjà créé ---------");
+        } else {
+            System.out.println("-------- Création d'un user ---------");
+            user = new User();
+            user.setId("USER_ID");
+            user.setAllAnswer(0);
+            user.setGoodAnswer(0);
+            user.setExerciceDone(0);
+            user.setCreatedList(0);
+
+            userDao.addUser(user);
+
+            intent = new Intent(getApplicationContext(), OnboardingActivity.class);
+            startActivity(intent);
+        }
 
         // Get a verb - If remove those lines, remove textView on activity_main.xml
         verb1 = new Verb();

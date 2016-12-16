@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.babel.mybabelapplication.dao.UserDAO;
 import com.babel.mybabelapplication.dao.VerbListDAO;
 import com.babel.mybabelapplication.dao.VocDAO;
 import com.babel.mybabelapplication.dao.VocListDAO;
@@ -160,6 +161,8 @@ public class CreateListActivity extends ActionBarActivity {
             vocList.setName(vocListName);
             vocList.setId(UUID.randomUUID().toString());
             vocListDAO.addVocList(vocList);
+            UserDAO userDAO = new UserDAO();
+            userDAO.upUserCreatedList();
 
             for (Voc item : vocs) {
                 vocDAO.addVocToVocListId(item, vocList.getId());
