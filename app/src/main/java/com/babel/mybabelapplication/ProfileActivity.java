@@ -9,10 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.babel.mybabelapplication.dao.UserDAO;
 import com.babel.mybabelapplication.dao.VerbDAO;
 import com.babel.mybabelapplication.dao.VerbListDAO;
 import com.babel.mybabelapplication.dao.VocDAO;
 import com.babel.mybabelapplication.dao.VocListDAO;
+import com.babel.mybabelapplication.model.User;
 import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.Voc;
 
@@ -34,6 +36,8 @@ public class ProfileActivity extends ActionBarActivity {
     private VocListDAO vocListDao;
     private List<Voc> allVocs;
     private List<Verb> allVerbs;
+    private UserDAO userDAO;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +84,15 @@ public class ProfileActivity extends ActionBarActivity {
         verbListDao = new VerbListDAO();
         vocDAO = new VocDAO();
         vocListDao = new VocListDAO();
+        userDAO = new UserDAO();
+
+        user = userDAO.getUser();
+        int percentGoodAnswer;
+        if (user.getAllAnswer() != 0) {
+            percentGoodAnswer = (user.getGoodAnswer() * 100) / user.getAllAnswer();
+        } else {
+            percentGoodAnswer = 0;
+        }
 
         allVocs = vocDAO.getAllVocs();
         allVerbs = verbDao.getAllVerbs();
@@ -97,12 +110,12 @@ public class ProfileActivity extends ActionBarActivity {
         int masteringWord = masteringVoc + masteringVerb;
 
         int percentMasteringVoc;
-        int percentMasteringVerb;
         if (allVocs.size() != 0) {
             percentMasteringVoc = (masteringVoc * 100) / allVocs.size();
         } else {
             percentMasteringVoc = 0;
         }
+        int percentMasteringVerb;
         if (allVerbs.size() != 0) {
             percentMasteringVerb = (masteringVerb * 100) / allVerbs.size();
         } else {
@@ -113,9 +126,9 @@ public class ProfileActivity extends ActionBarActivity {
             masteringWord + " mots maitrisés" + " --- " +
             percentMasteringVoc + "% de mots de vocabulaire maîtrisé" + " --- " +
             percentMasteringVerb + "% de verbes irréguliers maîtrisé" + " --- " +
-            masteringWord + " mots maitrisés" + " --- " +
-            masteringWord + " mots maitrisés" + " --- " +
-            masteringWord + " mots maitrisés" + " --- "
+            user.getCreatedList() + " listes créées" + " --- " +
+            user.getExerciceDone() + " exercices faits" + " --- " +
+            percentGoodAnswer + "% de bonnes réponses"
         );
     }
 }
