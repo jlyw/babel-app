@@ -63,8 +63,6 @@ public class VocabulaireFragment extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 VocList vocList = (VocList) vocListAdapter.getItem(position);
 
-                System.out.println(vocList.getName());
-
                 intent = new Intent(context, ShowVocListActivity.class);
                 intent.putExtra("LIST_VOC_ID", vocList.getId());
                 startActivity(intent);
