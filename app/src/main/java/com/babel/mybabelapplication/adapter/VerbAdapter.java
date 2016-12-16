@@ -35,8 +35,14 @@ public class VerbAdapter extends BaseAdapter {
         @BindView(R.id.voc_french_word)
         protected TextView textViewFrennchWord;
 
-        @BindView(R.id.voc_english_word)
-        protected TextView textViewEnglishWord;
+        @BindView(R.id.voc_english_word_infinitif)
+        protected TextView textViewEnglishWordInfinitif;
+
+        @BindView(R.id.voc_english_word_preterit)
+        protected TextView textViewEnglishWordPreterit;
+
+        @BindView(R.id.voc_english_word_past_perfect)
+        protected TextView textViewEnglishWordPastPerfect;
 
         @BindView(R.id.row_image_view)
         protected ImageView imageViewWordProgress;
@@ -71,7 +77,9 @@ public class VerbAdapter extends BaseAdapter {
             imageViewWordProgress.setImageResource(grade);
             imageViewListenWord.setImageResource(R.drawable.sound_icon);
             textViewFrennchWord.setText(verb.getFrench());
-            textViewEnglishWord.setText(verb.getInfinitive());
+            textViewEnglishWordInfinitif.setText(verb.getInfinitive());
+            textViewEnglishWordPreterit.setText(verb.getSimplePast());
+            textViewEnglishWordPastPerfect.setText(verb.getPastParticiple());
 
             imageViewListenWord.setOnClickListener(new View.OnClickListener() {
                 @Override
