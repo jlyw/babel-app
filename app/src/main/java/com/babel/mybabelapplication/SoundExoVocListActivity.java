@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.babel.mybabelapplication.dao.UserDAO;
 import com.babel.mybabelapplication.dao.VocDAO;
 import com.babel.mybabelapplication.dao.VocListDAO;
 import com.babel.mybabelapplication.model.Voc;
@@ -40,6 +41,8 @@ public class SoundExoVocListActivity extends ActionBarActivity {
     private Intent intent;
     private int[] listOfSuccess;
     private Voc voc;
+    private TextToSpeech ttobj;
+    private UserDAO userDAO;
 
     @BindView(R.id.text_view_result)
     protected TextView textViewResult;
@@ -55,7 +58,6 @@ public class SoundExoVocListActivity extends ActionBarActivity {
 
     @BindView(R.id.next_voc_exo_button)
     protected Button buttonNextExo;
-    private TextToSpeech ttobj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,7 @@ public class SoundExoVocListActivity extends ActionBarActivity {
 
         vocListDAO = new VocListDAO();
         vocDAO = new VocDAO();
+        userDAO = new UserDAO();
 
         listVocId = getIntent().getStringExtra("LIST_VOC_ID");
         index = getIntent().getIntExtra("INDEX", 0);
@@ -109,20 +112,25 @@ public class SoundExoVocListActivity extends ActionBarActivity {
 
             if(isFrench) {
                 if(Objects.equals(vocs.get(listOfIndex[index]).getEnglish().toLowerCase(), answer)) {
+                    userDAO.userGoodAnswer();
                     textViewResult.setText("Bien joué !");
                     listOfSuccess[index] = 1;
                     vocDAO.upVocGrade(voc);
+
                 } else {
+                    userDAO.userBadAnswer();
                     textViewResult.setText("Dommage ! La bonne réponse était " + vocs.get(listOfIndex[index]).getEnglish());
                     listOfSuccess[index] = 0;
                     vocDAO.downVocGrade(voc);
                 }
             } else {
                 if(Objects.equals(vocs.get(listOfIndex[index]).getFrench().toLowerCase(), answer)) {
+                    userDAO.userGoodAnswer();
                     textViewResult.setText("Bien joué !");
                     listOfSuccess[index] = 1;
                     vocDAO.upVocGrade(voc);
                 } else {
+                    userDAO.userBadAnswer();
                     textViewResult.setText("Dommage ! La bonne réponse était " + vocs.get(listOfIndex[index]).getFrench());
                     listOfSuccess[index] = 0;
                     vocDAO.downVocGrade(voc);
@@ -134,6 +142,7 @@ public class SoundExoVocListActivity extends ActionBarActivity {
     @OnClick(R.id.next_voc_exo_button)
     public void nextVocExo() {
         if(index+1 == vocs.size()) {
+            userDAO.upUserExerciceDone();
             intent = new Intent(getApplicationContext(), ResultExoActivity.class);
 
             intent.putExtra("LIST_VOC_ID", listVocId);

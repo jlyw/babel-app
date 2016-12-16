@@ -68,7 +68,7 @@ public class VocListAdapter extends BaseAdapter {
             } else {
                 resultPercent = 0;
             }
-            
+
 
             if(resultPercent <= 33) {
                 imageViewVocListImage.setImageResource(R.drawable.grade_0);
