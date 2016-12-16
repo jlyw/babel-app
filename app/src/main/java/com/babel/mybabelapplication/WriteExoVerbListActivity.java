@@ -164,13 +164,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_infinitive.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_infinitive.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_infinitive.setText("Bien joué !");
+                    //edit_view_infinitive.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_infinitive.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_infinitive.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_infinitive.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getInfinitive());
+                    edit_view_infinitive.setText(verbs.get(listOfIndex[index]).getInfinitive());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -179,13 +180,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_simple_past.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_simple_past.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_simple_past.setText("Bien joué !");
+                    //edit_view_simple_past.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_simple_past.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_simple_past.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_simple_past.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getSimplePast());
+                    edit_view_simple_past.setText(verbs.get(listOfIndex[index]).getSimplePast());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -194,13 +196,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_past_participle.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_past_participle.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_past_participle.setText("Bien joué !");
+                    //edit_view_past_participle.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_past_participle.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_past_participle.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_past_participle.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getPastParticiple());
+                    edit_view_past_participle.setText(verbs.get(listOfIndex[index]).getPastParticiple());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -221,13 +224,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_french.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_french.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_french.setText("Bien joué !");
+                    //edit_view_french.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_french.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_french.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_french.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getFrench());
+                    edit_view_french.setText(verbs.get(listOfIndex[index]).getFrench());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -236,13 +240,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_simple_past.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_simple_past.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_simple_past.setText("Bien joué !");
+                    //edit_view_simple_past.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_simple_past.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_simple_past.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_simple_past.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getSimplePast());
+                    edit_view_simple_past.setText(verbs.get(listOfIndex[index]).getSimplePast());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -251,13 +256,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_past_participle.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_past_participle.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_past_participle.setText("Bien joué !");
+                    //edit_view_past_participle.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_past_participle.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_past_participle.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_past_participle.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getPastParticiple());
+                    edit_view_past_participle.setText(verbs.get(listOfIndex[index]).getPastParticiple());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -277,13 +283,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_french.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_french.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_french.setText("Bien joué !");
+                    //edit_view_french.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_french.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_french.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_french.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getFrench());
+                    edit_view_french.setText(verbs.get(listOfIndex[index]).getFrench());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -292,13 +299,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_infinitive.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_infinitive.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_infinitive.setText("Bien joué !");
+                    //edit_view_infinitive.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_infinitive.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_infinitive.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_infinitive.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getInfinitive());
+                    edit_view_infinitive.setText(verbs.get(listOfIndex[index]).getInfinitive());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -307,13 +315,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_past_participle.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_past_participle.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_past_participle.setText("Bien joué !");
+                    //edit_view_past_participle.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_past_participle.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_past_participle.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_past_participle.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getPastParticiple());
+                    edit_view_past_participle.setText(verbs.get(listOfIndex[index]).getPastParticiple());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -333,13 +342,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_french.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_french.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_french.setText("Bien joué !");
+                    //edit_view_french.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_french.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_french.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_french.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getFrench());
+                    edit_view_french.setText(verbs.get(listOfIndex[index]).getFrench());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -348,13 +358,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_infinitive.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_infinitive.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_infinitive.setText("Bien joué !");
+                    //edit_view_infinitive.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_infinitive.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_infinitive.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_infinitive.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getInfinitive());
+                    edit_view_infinitive.setText(verbs.get(listOfIndex[index]).getInfinitive());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
@@ -363,13 +374,14 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                     edit_view_simple_past.setTextColor(Color.parseColor("#85c35d"));
                     edit_view_simple_past.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
-                    edit_view_simple_past.setText("Bien joué !");
+                    //edit_view_simple_past.setText("Bien joué !");
 
                     listOfSuccess[index]++;
                     verbDAO.upVerbGrade(verb);
                 } else {
+                    edit_view_simple_past.setTextColor(Color.parseColor("#eb5e58"));
                     edit_view_simple_past.setBackgroundResource(R.drawable.border_bottom_error);
-                    edit_view_simple_past.setText("Dommage !\nLa bonne réponse était " + verbs.get(listOfIndex[index]).getSimplePast());
+                    edit_view_simple_past.setText(verbs.get(listOfIndex[index]).getSimplePast());
                     userDAO.userBadAnswer();
                     verbDAO.downVerbGrade(verb);
                 }
