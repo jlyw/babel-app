@@ -27,4 +27,7 @@
     <string name="label_edit_list_activity">Editer une liste</string>
     <string name="label_create_list_verbs_activity">Créer une nouvelle liste de verbes</string>
     <string name="label_write_exo_verb_list_activity">Exercice de verbes irréguliers</string>
+    <string name="next">Suivant</string>
+    <string name="skip">Passer</string>
+    <string name="start">Allons y</string>
 </resources>

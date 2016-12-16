@@ -126,10 +126,7 @@ public class MainActivity extends ActionBarActivity {
 
         // Create a user if no user present
         userDao = new UserDAO();
-        if(userDao.userIsPresentInRealm()) {
-            System.out.println("-------- User déjà créé ---------");
-        } else {
-            System.out.println("-------- Création d'un user ---------");
+        if(!userDao.userIsPresentInRealm()) {
             user = new User();
             user.setId("USER_ID");
             user.setAllAnswer(0);
