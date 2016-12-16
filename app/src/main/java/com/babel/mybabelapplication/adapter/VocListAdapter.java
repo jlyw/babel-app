@@ -38,6 +38,9 @@ public class VocListAdapter extends BaseAdapter {
         @BindView(R.id.row_number_word)
         protected TextView textViewVocListNbWord;
 
+        @BindView(R.id.row_grade)
+        protected TextView textViewRowGrade;
+
         @BindView(R.id.row_image_view)
         protected ImageView imageViewVocListImage;
 
@@ -55,7 +58,26 @@ public class VocListAdapter extends BaseAdapter {
 
 
             //List<Voc> allVocOfAList = vocDAO.getAllVocsOffOneList(allVocLists.get(2).getId());
-            imageViewVocListImage.setImageResource(R.drawable.image_chouette);
+            int totalPoint = 0;
+            for( Voc item : vocList.getVocs()) {
+                totalPoint += item.getGrade();
+            }
+            int resultPercent;
+            if (vocList.getVocs().size() != 0) {
+                resultPercent = ((totalPoint * 100) / (vocList.getVocs().size() * 2));
+            } else {
+                resultPercent = 0;
+            }
+            
+
+            if(resultPercent <= 33) {
+                imageViewVocListImage.setImageResource(R.drawable.grade_0);
+            } else if (resultPercent <= 66) {
+                imageViewVocListImage.setImageResource(R.drawable.grade_1);
+            } else {
+                imageViewVocListImage.setImageResource(R.drawable.grade_2);
+            }
+            textViewRowGrade.setText("Liste maîtrisée à " + resultPercent + "%");
             textViewVocListName.setText(vocList.getName());
             textViewVocListNbWord.setText(vocList.getVocs().size() + " mots");
         }
