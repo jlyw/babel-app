@@ -31,6 +31,8 @@ public class VocAdapter extends BaseAdapter {
     private TextToSpeech ttobj;
     private VocDAO vocDAO;
     private VocListDAO vocListDao;
+    private Boolean frenchIsVisible;
+    private Boolean englishIsVisible;
 
     protected class VocViewHolder {
         @BindView(R.id.voc_french_word)
@@ -89,6 +91,8 @@ public class VocAdapter extends BaseAdapter {
     public VocAdapter(Context context, TextToSpeech ttobj) {
         vocs = new ArrayList<>();
         layoutInflater = LayoutInflater.from(context);
+        frenchIsVisible = true;
+        englishIsVisible = true;
 
         ttobjAdapter = ttobj;
     }
@@ -105,6 +109,20 @@ public class VocAdapter extends BaseAdapter {
         this.vocs.clear();
         this.vocs.addAll(vocList);
 
+        // Refresh UI
+        notifyDataSetChanged();
+    }
+
+    public void toggleFrenchVisibility() {
+
+        frenchIsVisible = !frenchIsVisible;
+        // Refresh UI
+        notifyDataSetChanged();
+    }
+
+    public void toggleEnglishVisibility() {
+
+        englishIsVisible = !englishIsVisible;
         // Refresh UI
         notifyDataSetChanged();
     }
@@ -140,6 +158,9 @@ public class VocAdapter extends BaseAdapter {
         } else {
             vocViewHolder = (VocViewHolder) rowView.getTag();
         }
+
+        vocViewHolder.textViewFrennchWord.setVisibility(frenchIsVisible ? View.VISIBLE : View.INVISIBLE);
+        vocViewHolder.textViewEnglishWord.setVisibility(englishIsVisible ? View.VISIBLE : View.INVISIBLE);
 
         Voc voc = vocs.get(position);
 
