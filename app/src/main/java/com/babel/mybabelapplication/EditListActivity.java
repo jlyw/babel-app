@@ -19,6 +19,7 @@ import com.babel.mybabelapplication.dao.VocDAO;
 import com.babel.mybabelapplication.dao.VocListDAO;
 import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,10 +82,13 @@ public class EditListActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
         // Bottom navigation
-        final BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
+        BottomNavigationViewEx bnve = (BottomNavigationViewEx) findViewById(R.id.bnve);
+        bnve.enableAnimation(true);
+        bnve.setTextVisibility(true);
+        bnve.setIconVisibility(true);
+        bnve.setCurrentItem(1);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(
+        bnve.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
