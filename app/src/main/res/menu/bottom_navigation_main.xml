@@ -5,13 +5,19 @@
         android:id="@+id/action_home"
         android:enabled="true"
         android:icon="@drawable/ic_favorite_white_24dp"
-        android:title="@string/text_accueil"
+        android:title="Listes"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_new_list"
         android:enabled="true"
         android:icon="@drawable/ic_access_time_white_24dp"
-        android:title="@string/text_newList"
+        android:title="Créer liste vocabulaire"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_new_list_verbs"
+        android:enabled="true"
+        android:icon="@drawable/ic_access_time_white_24dp"
+        android:title="Créer liste verbes"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_profile"

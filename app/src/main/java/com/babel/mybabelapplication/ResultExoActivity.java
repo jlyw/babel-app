@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.babel.mybabelapplication.dao.VocDAO;
@@ -33,6 +34,9 @@ public class ResultExoActivity extends ActionBarActivity {
 
     @BindView(R.id.button_back_to_lists)
     protected Button buttonBackToLists;
+
+    @BindView(R.id.result_background)
+    protected ImageView resultBackground;
 
     @BindView(R.id.button_retry_exo)
     protected Button buttonRetryExo;
@@ -83,15 +87,20 @@ public class ResultExoActivity extends ActionBarActivity {
         toolbar.setTitle(vocList.getName());
         if(resultPercent <= 33) {
             textViewComment.setText("Dommage, recommence !");
+            resultBackground.setImageResource(R.drawable.bg_result_0);
         } else if (resultPercent <= 66) {
             textViewComment.setText("Pas mal !");
+            resultBackground.setImageResource(R.drawable.bg_result_1);
         } else if (resultPercent == 100) {
             textViewComment.setText("Parfait !");
+            resultBackground.setImageResource(R.drawable.bg_result_2);
         } else {
             textViewComment.setText("Bravo !");
+            resultBackground.setImageResource(R.drawable.bg_result_2);
         }
+        resultBackground.setScaleType(ImageView.ScaleType.FIT_XY);
 
-        textViewPercentResponse.setText(resultPercent + "% de bonnes réponses");
+        textViewPercentResponse.setText(resultPercent + "%");
     }
 
     @OnClick(R.id.button_back_to_lists)
