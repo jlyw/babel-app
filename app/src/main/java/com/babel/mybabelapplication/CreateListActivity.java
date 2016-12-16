@@ -129,13 +129,14 @@ public class CreateListActivity extends ActionBarActivity {
     @OnClick(R.id.create_voc_button)
     public void onCreateVoc() {
         String vocFrench = editTextVocFrench.getText().toString().toLowerCase();
-        vocFrench = vocFrench.substring(0, 1).toUpperCase() + vocFrench.substring(1);
         String vocEnglish = editTextVocEnglish.getText().toString().toLowerCase();
-        vocEnglish = vocEnglish.substring(0, 1).toUpperCase() + vocEnglish.substring(1);
 
         if(vocFrench.isEmpty() || vocEnglish.isEmpty()) {
             showAlert(R.string.error_title_voc_create, R.string.error_message_voc_create);
         } else {
+            vocFrench = vocFrench.substring(0, 1).toUpperCase() + vocFrench.substring(1);
+            vocEnglish = vocEnglish.substring(0, 1).toUpperCase() + vocEnglish.substring(1);
+
             voc = new Voc();
             voc.setFrench(vocFrench);
             voc.setEnglish(vocEnglish);
@@ -168,7 +169,10 @@ public class CreateListActivity extends ActionBarActivity {
                 vocDAO.addVocToVocListId(item, vocList.getId());
             }
 
-            Intent intent = new Intent(this, MainActivity.class);
+//            Intent intent = new Intent(this, MainActivity.class);
+//            startActivity(intent);
+            intent = new Intent(getApplicationContext(), ShowVocListActivity.class);
+            intent.putExtra("LIST_VOC_ID", vocList.getId());
             startActivity(intent);
         }
     }

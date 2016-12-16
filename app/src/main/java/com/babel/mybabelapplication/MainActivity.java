@@ -143,15 +143,15 @@ public class MainActivity extends ActionBarActivity {
             startActivity(intent);
         }
 
-        // Get a verb - If remove those lines, remove textView on activity_main.xml
-        verb1 = new Verb();
-        verb1.setFrench("etre");
-        verb1.setId(UUID.randomUUID().toString());
-        new JsonTaskVerbSingle(this, verb1).execute(UrlBuilder.getVerbUrl("be"));
-        /* HANDLER for set number of adverts */
-        int interval = 400;
-        handler.postAtTime(runnable, System.currentTimeMillis() + interval);
-        handler.postDelayed(runnable, interval);
+//        // Get a verb - If remove those lines, remove textView on activity_main.xml
+//        verb1 = new Verb();
+//        verb1.setFrench("etre");
+//        verb1.setId(UUID.randomUUID().toString());
+//        new JsonTaskVerbSingle(this, verb1).execute(UrlBuilder.getVerbUrl("be"));
+//        /* HANDLER for set number of adverts */
+//        int interval = 400;
+//        handler.postAtTime(runnable, System.currentTimeMillis() + interval);
+//        handler.postDelayed(runnable, interval);
 
         verbDao = new VerbDAO();
         verbListDao = new VerbListDAO();
