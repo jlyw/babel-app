@@ -2,7 +2,6 @@ package com.babel.mybabelapplication.dao;
 
 import android.support.annotation.Nullable;
 
-import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.VerbList;
 
 import java.util.List;

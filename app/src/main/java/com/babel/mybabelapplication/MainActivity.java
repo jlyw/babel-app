@@ -1,10 +1,7 @@
 package com.babel.mybabelapplication;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -24,27 +21,16 @@ import com.babel.mybabelapplication.dao.VerbListDAO;
 import com.babel.mybabelapplication.dao.VocDAO;
 import com.babel.mybabelapplication.dao.VocListDAO;
 import com.babel.mybabelapplication.model.User;
-import com.babel.mybabelapplication.model.Verb;
-import com.babel.mybabelapplication.model.VerbList;
-import com.babel.mybabelapplication.model.Voc;
-import com.babel.mybabelapplication.model.VocList;
-import com.babel.mybabelapplication.network.JsonTaskVerbSingle;
-import com.babel.mybabelapplication.network.UrlBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
 public class MainActivity extends ActionBarActivity {
     Intent intent;
-    Verb verb1;
-    Verb verb2;
     private VerbDAO verbDao;
     private VerbListDAO verbListDao;
     private VocDAO vocDAO;

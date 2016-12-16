@@ -1,6 +1,5 @@
 package com.babel.mybabelapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -15,7 +14,6 @@ import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.VerbList;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 import butterknife.BindView;

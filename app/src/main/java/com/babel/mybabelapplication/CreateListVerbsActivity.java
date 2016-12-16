@@ -175,8 +175,6 @@ public class CreateListVerbsActivity extends ActionBarActivity {
                 verbDAO.addVerbToVerbListId(item, verbList.getId());
             }
 
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
             intent = new Intent(getApplicationContext(), ShowVerbListActivity.class);
             intent.putExtra("LIST_VOC_ID", verbList.getId());
             startActivity(intent);

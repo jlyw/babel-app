@@ -2,7 +2,6 @@ package com.babel.mybabelapplication;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,17 +14,12 @@ import com.babel.mybabelapplication.adapter.VocListAdapter;
 import com.babel.mybabelapplication.dao.VocListDAO;
 import com.babel.mybabelapplication.model.VocList;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class VocabulaireFragment extends Fragment{
     Context context;
     Intent intent;
 
-    //@BindView(R.id.VocListListView)
     protected ListView vocListListView;
 
     protected VocListAdapter vocListAdapter;

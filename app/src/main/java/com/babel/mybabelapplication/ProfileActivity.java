@@ -5,17 +5,13 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.babel.mybabelapplication.dao.UserDAO;
 import com.babel.mybabelapplication.dao.VerbDAO;
@@ -26,17 +22,14 @@ import com.babel.mybabelapplication.model.User;
 import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.Voc;
 import com.eralp.circleprogressview.CircleProgressView;
-import com.eralp.circleprogressview.ProgressAnimationListener;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ProfileActivity extends ActionBarActivity {
     Intent intent;
-    private Toolbar toolbar;
 
     private VerbDAO verbDao;
     private VerbListDAO verbListDao;

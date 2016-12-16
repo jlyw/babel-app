@@ -1,6 +1,5 @@
 package com.babel.mybabelapplication;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -15,18 +14,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.babel.mybabelapplication.dao.UserDAO;
-import com.babel.mybabelapplication.dao.VerbListDAO;
 import com.babel.mybabelapplication.dao.VocDAO;
 import com.babel.mybabelapplication.dao.VocListDAO;
 import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.UUID;
 
 import butterknife.BindView;

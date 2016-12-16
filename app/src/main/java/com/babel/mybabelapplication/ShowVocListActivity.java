@@ -1,6 +1,5 @@
 package com.babel.mybabelapplication;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,9 +20,6 @@ import com.babel.mybabelapplication.dao.VocListDAO;
 import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;

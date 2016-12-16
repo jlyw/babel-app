@@ -2,8 +2,6 @@ package com.babel.mybabelapplication.dao;
 
 import android.support.annotation.Nullable;
 
-import com.babel.mybabelapplication.model.Verb;
-import com.babel.mybabelapplication.model.VerbList;
 import com.babel.mybabelapplication.model.Voc;
 import com.babel.mybabelapplication.model.VocList;
 
@@ -93,13 +91,6 @@ public class VocDAO {
         voc.deleteFromRealm();
         realm.commitTransaction();
     }
-
-    // la bière est-elle présente dans les favoris
-    /*public boolean isPresentInFavorites(Voc voc) {
-        Voc voc = getVoc(voc.getId());
-
-        return voc != null;
-    }*/
 
     //    Ajouter un voc à une liste
     public void addVocToVocListId(Voc voc, String vocListId) {

@@ -76,7 +76,7 @@ public class VerbAdapter extends BaseAdapter {
             imageViewListenWord.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ttobjAdapter.speak(verb.getInfinitive(), TextToSpeech.QUEUE_FLUSH, null);
+                    ttobjAdapter.speak(verb.getInfinitive() + ", " + verb.getSimplePast() + ", " + verb.getPastParticiple(), TextToSpeech.QUEUE_FLUSH, null);
                 }
             });
         }
@@ -127,8 +127,6 @@ public class VerbAdapter extends BaseAdapter {
         VerbAdapter.VerbViewHolder verbViewHolder;
 
         if(rowView == null) {
-//            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
             rowView = layoutInflater.inflate(R.layout.row_verb, parent, false);
             verbViewHolder = new VerbAdapter.VerbViewHolder(rowView);
 

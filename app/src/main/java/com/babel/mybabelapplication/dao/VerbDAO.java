@@ -4,11 +4,8 @@ import android.support.annotation.Nullable;
 
 import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.VerbList;
-import com.babel.mybabelapplication.model.Voc;
-import com.babel.mybabelapplication.model.VocList;
 
 import java.util.List;
-import java.util.UUID;
 
 import io.realm.Case;
 import io.realm.Realm;
