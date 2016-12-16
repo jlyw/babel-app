@@ -140,59 +140,11 @@ public class MainActivity extends ActionBarActivity {
             startActivity(intent);
         }
 
-        // Get a verb - If remove those lines, remove textView on activity_main.xml
-        verb1 = new Verb();
-        verb1.setFrench("etre");
-        verb1.setId(UUID.randomUUID().toString());
-        new JsonTaskVerbSingle(this, verb1).execute(UrlBuilder.getVerbUrl("be"));
-        /* HANDLER for set number of adverts */
-        int interval = 400;
-        handler.postAtTime(runnable, System.currentTimeMillis() + interval);
-        handler.postDelayed(runnable, interval);
-
         verbDao = new VerbDAO();
         verbListDao = new VerbListDAO();
         vocDAO = new VocDAO();
         vocListDao = new VocListDAO();
     }
-
-    // Used for the verb1
-    private Handler handler = new Handler();
-    private Runnable runnable = new Runnable(){
-        public void run() {
-            /*
-            testTextView.setText(verb1.getInfinitive() + " " + verb1.getSimplePast() + " " + verb1.getPastParticiple());
-            verbDao.addVerb(verb1);
-
-            verb2 = verbDao.getVerb(verb1.getId());
-            assert verb2 != null;
-            testTextView2.setText(verb2.getFrench() + " " + verb2.getInfinitive() + " " + verb2.getId());
-            */
-            /*
-            verbDao.updateVerbInfinitive(verb2, "Merci le Droide ? ._.");
-            testTextView4.setText(verb2.getInfinitive());
-            */
-            /*
-            VerbList verbList1 = new VerbList();
-            verbList1.setName("dat_list2");
-            verbList1.setId(UUID.randomUUID().toString());
-            verbListDao.addVerbList(verbList1);
-            */
-            /*
-            verbDao.addVerbToVerbListId(verb1, verbList1.getId());
-            */
-            /*
-            List<VocList> allVocLists = vocListDao.getAllVocLists();
-            testTextView3.setText(allVocLists.toString());
-            try {
-                testTextView4.setText(allVocLists.get(2).getVocs().where().findAll().get(0).getFrench());
-                List<Voc> allVocOfAList = vocDAO.getAllVocsOffOneList(allVocLists.get(2).getId());
-                testTextView.setText(allVocOfAList.get(0).getEnglish());
-            } catch (IndexOutOfBoundsException ignored) {
-            }
-            */
-        }
-    };
 
     // Setup for tabs and tabs Fragments
     private void setupViewPager(ViewPager viewPager) {

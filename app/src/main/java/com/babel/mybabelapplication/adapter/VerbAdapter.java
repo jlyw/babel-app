@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.babel.mybabelapplication.R;
-import com.babel.mybabelapplication.dao.VocDAO;
-import com.babel.mybabelapplication.dao.VocListDAO;
-import com.babel.mybabelapplication.model.Voc;
+import com.babel.mybabelapplication.dao.VerbDAO;
+import com.babel.mybabelapplication.dao.VerbListDAO;
+import com.babel.mybabelapplication.model.Verb;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,17 +22,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Lucas on 15/12/2016.
+ * Created by Lucas on 16/12/2016.
  */
 
-public class VocAdapter extends BaseAdapter {
-
+public class VerbAdapter extends BaseAdapter {
     private final TextToSpeech ttobjAdapter;
     private TextToSpeech ttobj;
-    private VocDAO vocDAO;
-    private VocListDAO vocListDao;
+    private VerbDAO verbDAO;
+    private VerbListDAO verbListDao;
 
-    protected class VocViewHolder {
+    protected class VerbViewHolder {
         @BindView(R.id.voc_french_word)
         protected TextView textViewFrennchWord;
 
@@ -45,19 +44,19 @@ public class VocAdapter extends BaseAdapter {
         @BindView(R.id.voc_sound_icon)
         protected ImageView imageViewListenWord;
 
-        public VocViewHolder(View vocListRowView) {
-            ButterKnife.bind(this, vocListRowView);
+        public VerbViewHolder(View verbListRowView) {
+            ButterKnife.bind(this, verbListRowView);
         }
 
-        public void setVoc(final Voc voc) {
-            vocDAO = new VocDAO();
-            vocListDao = new VocListDAO();
+        public void setVerb(final Verb verb) {
+            verbDAO = new VerbDAO();
+            verbListDao = new VerbListDAO();
 
-            List<Voc> allVocs = vocDAO.getAllVocs();
+            List<Verb> allVerbs = verbDAO.getAllVerbs();
 
             // Maitrise du mot
             int grade = R.drawable.grade_0;
-            switch(voc.getGrade()) {
+            switch(verb.getGrade()) {
                 case 0:
                     grade = R.drawable.grade_0;
                     break;
@@ -71,39 +70,39 @@ public class VocAdapter extends BaseAdapter {
 
             imageViewWordProgress.setImageResource(grade);
             imageViewListenWord.setImageResource(R.drawable.sound_icon);
-            textViewFrennchWord.setText(voc.getFrench());
-            textViewEnglishWord.setText(voc.getEnglish());
+            textViewFrennchWord.setText(verb.getFrench());
+            textViewEnglishWord.setText(verb.getInfinitive());
 
             imageViewListenWord.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ttobjAdapter.speak(voc.getEnglish(), TextToSpeech.QUEUE_FLUSH, null);
+                    ttobjAdapter.speak(verb.getInfinitive(), TextToSpeech.QUEUE_FLUSH, null);
                 }
             });
         }
     }
 
     private final LayoutInflater layoutInflater;
-    private List<Voc> vocs; //null
+    private List<Verb> verbs; //null
 
-    public VocAdapter(Context context, TextToSpeech ttobj) {
-        vocs = new ArrayList<>();
+    public VerbAdapter(Context context, TextToSpeech ttobj) {
+        verbs = new ArrayList<>();
         layoutInflater = LayoutInflater.from(context);
 
         ttobjAdapter = ttobj;
     }
 
-    public void refresh(Voc[] voc) {
-        if(voc == null) {
-            refresh(new ArrayList<Voc>());
+    public void refresh(Verb[] verb) {
+        if(verb == null) {
+            refresh(new ArrayList<Verb>());
         } else {
-            refresh(Arrays.asList(voc));
+            refresh(Arrays.asList(verb));
         }
     }
 
-    public void refresh(List<Voc> vocList) {
-        this.vocs.clear();
-        this.vocs.addAll(vocList);
+    public void refresh(List<Verb> verbList) {
+        this.verbs.clear();
+        this.verbs.addAll(verbList);
 
         // Refresh UI
         notifyDataSetChanged();
@@ -111,11 +110,11 @@ public class VocAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return vocs.size();
+        return verbs.size();
     }
 
     @Override
-    public Object getItem(int position) { return vocs.get(position); }
+    public Object getItem(int position) { return verbs.get(position); }
 
     @Override
     public long getItemId(int position) { return 0; }
@@ -125,24 +124,24 @@ public class VocAdapter extends BaseAdapter {
         View rowView = convertView;
 
         // Utilisation d'un viewHolder
-        VocViewHolder vocViewHolder;
+        VerbAdapter.VerbViewHolder verbViewHolder;
 
         if(rowView == null) {
 //            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            rowView = layoutInflater.inflate(R.layout.row_voc, parent, false);
-            vocViewHolder = new VocViewHolder(rowView);
+            rowView = layoutInflater.inflate(R.layout.row_verb, parent, false);
+            verbViewHolder = new VerbAdapter.VerbViewHolder(rowView);
 
-            rowView.setTag(vocViewHolder);
+            rowView.setTag(verbViewHolder);
 
-            rowView.setTag(vocViewHolder);
+            rowView.setTag(verbViewHolder);
         } else {
-            vocViewHolder = (VocViewHolder) rowView.getTag();
+            verbViewHolder = (VerbAdapter.VerbViewHolder) rowView.getTag();
         }
 
-        Voc voc = vocs.get(position);
+        Verb verb = verbs.get(position);
 
-        vocViewHolder.setVoc(voc);
+        verbViewHolder.setVerb(verb);
 
         return rowView;
     }

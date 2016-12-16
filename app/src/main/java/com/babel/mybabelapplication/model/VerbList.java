@@ -8,6 +8,7 @@ import io.realm.annotations.Required;
 public class VerbList extends RealmObject {
     @PrimaryKey
     private String id;
+
     @Required
     private String name;
     private RealmList<Verb> verbs;
@@ -28,11 +29,11 @@ public class VerbList extends RealmObject {
         this.name = name;
     }
 
-    public RealmList getVerbs() {
+    public RealmList<Verb> getVerbs() {
         return verbs;
     }
 
-    public void setVerbs(RealmList verbs) {
+    public void setVerbs(RealmList<Verb> verbs) {
         this.verbs = verbs;
     }
 }
