@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.babel.mybabelapplication.adapter.VocListAdapter;
 import com.babel.mybabelapplication.dao.VocListDAO;
@@ -21,6 +24,9 @@ public class VocabulaireFragment extends Fragment{
     Intent intent;
 
     protected ListView vocListListView;
+
+    protected RelativeLayout layoutNoData;
+    protected Button ctaVocNoData;
 
     protected VocListAdapter vocListAdapter;
 
@@ -42,6 +48,9 @@ public class VocabulaireFragment extends Fragment{
 
         vocListListView = (ListView) rootView.findViewById(R.id.VocListListView);
 
+        layoutNoData = (RelativeLayout) rootView.findViewById(R.id.layout_no_data);
+        ctaVocNoData = (Button) rootView.findViewById(R.id.cta_create_voc_list);
+
         context = container.getContext();
 
         vocListAdapter = new VocListAdapter(getActivity());
@@ -51,6 +60,18 @@ public class VocabulaireFragment extends Fragment{
         final List<VocList> allVocLists = vocListDao.getAllVocLists();
 
         vocListAdapter.refresh(allVocLists);
+
+        if(vocListAdapter.getCount() == 0) {
+            layoutNoData.setVisibility(View.VISIBLE);
+        }
+
+        ctaVocNoData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(context, CreateListActivity.class);
+                startActivity(intent);
+            }
+        });
 
         vocListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

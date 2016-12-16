@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.babel.mybabelapplication.adapter.VerbListAdapter;
 import com.babel.mybabelapplication.dao.VerbListDAO;
@@ -21,6 +23,9 @@ public class VerbesIrreguliersFragment extends Fragment{
     Intent intent;
 
     protected ListView verbListListView;
+
+    protected RelativeLayout layoutNoData;
+    protected Button ctaVerbNoData;
 
     protected VerbListAdapter verbListAdapter;
 
@@ -42,6 +47,9 @@ public class VerbesIrreguliersFragment extends Fragment{
 
         verbListListView = (ListView) rootView.findViewById(R.id.VocListListView);
 
+        layoutNoData = (RelativeLayout) rootView.findViewById(R.id.layout_no_data);
+        ctaVerbNoData = (Button) rootView.findViewById(R.id.cta_create_verb_list);
+
         context = container.getContext();
 
         verbListAdapter = new VerbListAdapter(getActivity());
@@ -51,6 +59,18 @@ public class VerbesIrreguliersFragment extends Fragment{
         final List<VerbList> allVerbLists = verbListDao.getAllVerbLists();
 
         verbListAdapter.refresh(allVerbLists);
+
+        if(verbListAdapter.getCount() == 0) {
+            layoutNoData.setVisibility(View.VISIBLE);
+        }
+
+        ctaVerbNoData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(context, CreateListVerbsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         verbListListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
