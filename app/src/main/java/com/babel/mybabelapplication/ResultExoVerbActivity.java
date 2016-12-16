@@ -8,13 +8,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.babel.mybabelapplication.dao.VocDAO;
-import com.babel.mybabelapplication.dao.VocListDAO;
-import com.babel.mybabelapplication.model.Voc;
-import com.babel.mybabelapplication.model.VocList;
+import com.babel.mybabelapplication.dao.VerbDAO;
+import com.babel.mybabelapplication.dao.VerbListDAO;
+import com.babel.mybabelapplication.model.Verb;
+import com.babel.mybabelapplication.model.VerbList;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 import butterknife.BindView;
@@ -22,7 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.Realm;
 
-public class ResultExoActivity extends ActionBarActivity {
+public class ResultExoVerbActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
 
@@ -40,22 +39,22 @@ public class ResultExoActivity extends ActionBarActivity {
 
     @BindView(R.id.button_retry_exo)
     protected Button buttonRetryExo;
-    private VocListDAO vocListDAO;
-    private String listVocId;
+    private VerbListDAO verbListDAO;
+    private String listVerbId;
     private String exoType;
     private int[] listOfIndex;
     private int[] listOfSuccess;
-    private VocList vocList;
+    private VerbList verbList;
     private int totalPoint;
     private int resultPercent;
     private Intent intent;
-    private VocDAO vocDAO;
-    private List<Voc> vocs;
+    private VerbDAO verbDAO;
+    private List<Verb> verbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result_exo);
+        setContentView(R.layout.activity_result_exo_verb);
 
         Realm.init(this);
         ButterKnife.bind(this);
@@ -65,26 +64,26 @@ public class ResultExoActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        vocListDAO = new VocListDAO();
-        vocDAO = new VocDAO();
+        verbListDAO = new VerbListDAO();
+        verbDAO = new VerbDAO();
 
-        listVocId = getIntent().getStringExtra("LIST_VOC_ID");
+        listVerbId = getIntent().getStringExtra("LIST_VOC_ID");
         exoType = getIntent().getStringExtra("EXO_TYPE");
         listOfIndex = getIntent().getIntArrayExtra("RANDOM_INDEXING");
         listOfSuccess = getIntent().getIntArrayExtra("SUCCESS_LIST");
 
-        vocList = vocListDAO.getVocList(listVocId);
-        vocs = vocDAO.getAllVocsOffOneList(listVocId);
+        verbList = verbListDAO.getVerbList(listVerbId);
+        verbs = verbDAO.getAllVerbsOffOneList(listVerbId);
 
-        toolbar.setTitle("Résultats - " + vocList.getName());
+        toolbar.setTitle("Résultats - " + verbList.getName());
 
         totalPoint = 0;
         for( int i : listOfSuccess) {
             totalPoint += i;
         }
-        resultPercent = ((totalPoint * 100) / listOfIndex.length);
+        resultPercent = ((totalPoint * 100) / (listOfIndex.length * 3));
 
-        toolbar.setTitle(vocList.getName());
+        toolbar.setTitle(verbList.getName());
         if(resultPercent <= 33) {
             textViewComment.setText("Dommage, recommence !");
             resultBackground.setImageResource(R.drawable.bg_result_0);
@@ -106,7 +105,7 @@ public class ResultExoActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         intent = new Intent(getApplicationContext(), ShowVerbListActivity.class);
-        intent.putExtra("LIST_VOC_ID", listVocId);
+        intent.putExtra("LIST_VOC_ID", listVerbId);
         startActivity(intent);
     }
 
@@ -118,14 +117,10 @@ public class ResultExoActivity extends ActionBarActivity {
 
     @OnClick(R.id.button_retry_exo)
     public void RetryExo() {
-        if(Objects.equals(exoType, "VOC_WRITE")) {
-            intent = new Intent(getApplicationContext(), WriteExoVocListActivity.class);
-        } else {
-            intent = new Intent(getApplicationContext(), SoundExoVocListActivity.class);
-        }
+        intent = new Intent(getApplicationContext(), WriteExoVerbListActivity.class);
 
-        int[] listOfIndex = new int[vocs.size()];
-        for (int i = 0; i < vocs.size(); ++i) {
+        int[] listOfIndex = new int[verbs.size()];
+        for (int i = 0; i < verbs.size(); ++i) {
             listOfIndex[i] = i;
         }
         int index, temp;
@@ -138,12 +133,12 @@ public class ResultExoActivity extends ActionBarActivity {
             listOfIndex[i] = temp;
         }
 
-        int[] listOfSuccess = new int[vocs.size()];
-        for (int i = 0; i < vocs.size(); ++i) {
+        int[] listOfSuccess = new int[verbs.size()];
+        for (int i = 0; i < verbs.size(); ++i) {
             listOfSuccess[i] = -1;
         }
 
-        intent.putExtra("LIST_VOC_ID", listVocId);
+        intent.putExtra("LIST_VOC_ID", listVerbId);
 
         intent.putExtra("RANDOM_INDEXING", listOfIndex);
         intent.putExtra("SUCCESS_LIST", listOfSuccess);

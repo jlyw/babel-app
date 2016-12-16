@@ -1,10 +1,8 @@
 package com.babel.mybabelapplication;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
@@ -22,8 +20,6 @@ import com.babel.mybabelapplication.model.VocList;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
-import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

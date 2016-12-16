@@ -4,11 +4,8 @@ import android.support.annotation.Nullable;
 
 import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.VerbList;
-import com.babel.mybabelapplication.model.Voc;
-import com.babel.mybabelapplication.model.VocList;
 
 import java.util.List;
-import java.util.UUID;
 
 import io.realm.Case;
 import io.realm.Realm;
@@ -76,6 +73,22 @@ public class VerbDAO {
     public void updateVerbGrade(Verb verb, Integer grade) {
         realm.beginTransaction();
         verb.setGrade(grade);
+        realm.copyToRealmOrUpdate(verb);
+        realm.commitTransaction();
+    }
+    public void upVerbGrade(Verb verb) {
+        realm.beginTransaction();
+        if(verb.getGrade() < 2) {
+            verb.setGrade(verb.getGrade()+1);
+        }
+        realm.copyToRealmOrUpdate(verb);
+        realm.commitTransaction();
+    }
+    public void downVerbGrade(Verb verb) {
+        realm.beginTransaction();
+        if(verb.getGrade() > 0) {
+            verb.setGrade(verb.getGrade()-1);
+        }
         realm.copyToRealmOrUpdate(verb);
         realm.commitTransaction();
     }
