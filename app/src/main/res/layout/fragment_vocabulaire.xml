@@ -14,4 +14,33 @@
         android:layout_marginBottom="100dp"
         android:layout_gravity="start"></ListView>
 
+    <RelativeLayout
+        android:id="@+id/layout_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/tour_1"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="24dp"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/text_no_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ensemble, allons construire la tour de Babel"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center_horizontal"/>
+        <Button
+            android:layout_below="@id/text_no_data"
+            android:id="@+id/cta_create_voc_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_rectangle_border_white"
+            android:text="Créer une liste de vocabulaires"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"/>
+    </RelativeLayout>
+
 </FrameLayout>
