@@ -12,27 +12,87 @@ tools:context="com.babel.mybabelapplication.SoundExoVocListActivity">
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:layout_marginTop="50dp"
-    android:layout_marginBottom="60dp">
+    android:layout_marginTop="50dp">
 
-    <EditText
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Votre réponse"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textColor="@color/colorPrimary"
-        android:layout_below="@+id/text_view_to_trad"
-        android:id="@+id/edit_text_answer"/>
+        android:orientation="horizontal"
+        android:id="@+id/layout_header_exo"
+        android:layout_marginBottom="65dp">
+        <TextView
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#3d3d3d"
+            android:text="Ecrivez ce que vous entendez"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="34dp"
+            android:id="@+id/text_view_trad"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#ffcba1"></LinearLayout>
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layout_button_listen"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_text_answer"
-        android:layout_above="@+id/valid_voc_exo_button"
-        android:id="@+id/text_view_result"/>
+        android:layout_below="@id/layout_header_exo"
+        android:layout_marginBottom="65dp"
+        android:gravity="center">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/button_sound_again" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/layout_text_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_button_listen"
+        android:layout_marginBottom="8dp"
+        android:gravity="center">
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Votre réponse"
+            android:textColorHint="#737373"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:background="@drawable/border_bottom"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:id="@+id/edit_text_answer"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/layout_answer"
+        android:layout_width="match_parent"
+        android:layout_below="@id/layout_text_answer"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_below="@+id/edit_text_answer"
+            android:textSize="16sp"
+            android:textColor="#eb5e58"
+            android:id="@+id/text_view_result"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,27 +101,29 @@ tools:context="com.babel.mybabelapplication.SoundExoVocListActivity">
         android:id="@+id/text_view_indexing"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Valider"
+        android:background="@drawable/button_rectangle"
         android:layout_alignParentBottom="true"
+        android:textColor="#eb5e58"
+        android:textSize="18sp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:id="@+id/valid_voc_exo_button"/>
 
     <Button
-        android:text="Réécouter"
-        android:layout_below="@+id/edit_text_answer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_sound_again" />
-
-    <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Suivant"
         android:visibility="gone"
+        android:background="@drawable/button_rectangle"
         android:layout_alignParentBottom="true"
+        android:textColor="#eb5e58"
+        android:textSize="18sp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:id="@+id/next_voc_exo_button"/>
-
 
 </RelativeLayout>
 

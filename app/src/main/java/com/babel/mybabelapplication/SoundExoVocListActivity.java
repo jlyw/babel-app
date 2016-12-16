@@ -3,6 +3,7 @@ package com.babel.mybabelapplication;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.ActionBarActivity;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.babel.mybabelapplication.dao.UserDAO;
@@ -59,6 +61,9 @@ public class SoundExoVocListActivity extends ActionBarActivity {
     @BindView(R.id.next_voc_exo_button)
     protected Button buttonNextExo;
 
+    @BindView(R.id.button_sound_again)
+    protected ImageView buttonSoundAgain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +87,8 @@ public class SoundExoVocListActivity extends ActionBarActivity {
         index = getIntent().getIntExtra("INDEX", 0);
         listOfIndex = getIntent().getIntArrayExtra("RANDOM_INDEXING");
         listOfSuccess = getIntent().getIntArrayExtra("SUCCESS_LIST");
+
+        buttonSoundAgain.setImageResource(R.drawable.button_sound);
 
         vocList = vocListDAO.getVocList(listVocId);
         vocs = vocDAO.getAllVocsOffOneList(listVocId);
@@ -120,25 +127,31 @@ public class SoundExoVocListActivity extends ActionBarActivity {
             if(isFrench) {
                 if(Objects.equals(vocs.get(listOfIndex[index]).getEnglish().toLowerCase(), answer)) {
                     userDAO.userGoodAnswer();
+                    textViewResult.setTextColor(Color.parseColor("#85c35d"));
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_success);
                     textViewResult.setText("Bien joué !");
                     listOfSuccess[index] = 1;
                     vocDAO.upVocGrade(voc);
 
                 } else {
                     userDAO.userBadAnswer();
-                    textViewResult.setText("Dommage ! La bonne réponse était " + vocs.get(listOfIndex[index]).getEnglish());
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_error);
+                    textViewResult.setText("Dommage !\nLa bonne réponse était " + vocs.get(listOfIndex[index]).getEnglish());
                     listOfSuccess[index] = 0;
                     vocDAO.downVocGrade(voc);
                 }
             } else {
                 if(Objects.equals(vocs.get(listOfIndex[index]).getFrench().toLowerCase(), answer)) {
                     userDAO.userGoodAnswer();
+                    textViewResult.setTextColor(Color.parseColor("#85c35d"));
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_success);
                     textViewResult.setText("Bien joué !");
                     listOfSuccess[index] = 1;
                     vocDAO.upVocGrade(voc);
                 } else {
                     userDAO.userBadAnswer();
-                    textViewResult.setText("Dommage ! La bonne réponse était " + vocs.get(listOfIndex[index]).getFrench());
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_error);
+                    textViewResult.setText("Dommage !\nLa bonne réponse était " + vocs.get(listOfIndex[index]).getFrench());
                     listOfSuccess[index] = 0;
                     vocDAO.downVocGrade(voc);
                 }
