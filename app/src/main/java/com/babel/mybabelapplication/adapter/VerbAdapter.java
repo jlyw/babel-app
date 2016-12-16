@@ -30,6 +30,8 @@ public class VerbAdapter extends BaseAdapter {
     private TextToSpeech ttobj;
     private VerbDAO verbDAO;
     private VerbListDAO verbListDao;
+    private Boolean frenchIsVisible;
+    private Boolean englishIsVisible;
 
     protected class VerbViewHolder {
         @BindView(R.id.voc_french_word)
@@ -96,6 +98,8 @@ public class VerbAdapter extends BaseAdapter {
     public VerbAdapter(Context context, TextToSpeech ttobj) {
         verbs = new ArrayList<>();
         layoutInflater = LayoutInflater.from(context);
+        frenchIsVisible = true;
+        englishIsVisible = true;
 
         ttobjAdapter = ttobj;
     }
@@ -112,6 +116,20 @@ public class VerbAdapter extends BaseAdapter {
         this.verbs.clear();
         this.verbs.addAll(verbList);
 
+        // Refresh UI
+        notifyDataSetChanged();
+    }
+
+    public void toggleFrenchVisibility() {
+
+        frenchIsVisible = !frenchIsVisible;
+        // Refresh UI
+        notifyDataSetChanged();
+    }
+
+    public void toggleEnglishVisibility() {
+
+        englishIsVisible = !englishIsVisible;
         // Refresh UI
         notifyDataSetChanged();
     }
@@ -144,6 +162,11 @@ public class VerbAdapter extends BaseAdapter {
         } else {
             verbViewHolder = (VerbAdapter.VerbViewHolder) rowView.getTag();
         }
+
+        verbViewHolder.textViewFrennchWord.setVisibility(frenchIsVisible ? View.VISIBLE : View.INVISIBLE);
+        verbViewHolder.textViewEnglishWordInfinitif.setVisibility(englishIsVisible ? View.VISIBLE : View.INVISIBLE);
+        verbViewHolder.textViewEnglishWordPreterit.setVisibility(englishIsVisible ? View.VISIBLE : View.INVISIBLE);
+        verbViewHolder.textViewEnglishWordPastPerfect.setVisibility(englishIsVisible ? View.VISIBLE : View.INVISIBLE);
 
         Verb verb = verbs.get(position);
 

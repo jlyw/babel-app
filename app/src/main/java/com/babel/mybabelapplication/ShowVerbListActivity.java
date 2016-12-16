@@ -199,4 +199,14 @@ public class ShowVerbListActivity extends ActionBarActivity {
         intent.putExtra("LIST_VOC_ID", listVerbId);
         startActivity(intent);
     }
+
+    @OnClick(R.id.icon_hide_french_words)
+    public void hideFrenchContent() {
+        verbAdapter.toggleFrenchVisibility();
+    }
+
+    @OnClick(R.id.icon_hide_english_words)
+    public void setIconHideEnglishWords() {
+        verbAdapter.toggleEnglishVisibility();
+    }
 }
