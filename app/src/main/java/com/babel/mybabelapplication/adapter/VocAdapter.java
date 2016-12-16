@@ -142,6 +142,7 @@ public class VocAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView = convertView;
 
+
         // Utilisation d'un viewHolder
         VocViewHolder vocViewHolder;
 
