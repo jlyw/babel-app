@@ -125,20 +125,20 @@ public class MainActivity extends ActionBarActivity {
         );;
 
         // Create a user if no user present
-        userDao = new UserDAO();
-        if(!userDao.userIsPresentInRealm()) {
-            user = new User();
-            user.setId("USER_ID");
-            user.setAllAnswer(0);
-            user.setGoodAnswer(0);
-            user.setExerciceDone(0);
-            user.setCreatedList(0);
-
-            userDao.addUser(user);
-
+//        userDao = new UserDAO();
+//        if(!userDao.userIsPresentInRealm()) {
+//            user = new User();
+//            user.setId("USER_ID");
+//            user.setAllAnswer(0);
+//            user.setGoodAnswer(0);
+//            user.setExerciceDone(0);
+//            user.setCreatedList(0);
+//
+//            userDao.addUser(user);
+//
             intent = new Intent(getApplicationContext(), OnboardingActivity.class);
             startActivity(intent);
-        }
+//        }
 
         // Get a verb - If remove those lines, remove textView on activity_main.xml
         verb1 = new Verb();
