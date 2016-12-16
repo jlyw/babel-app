@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.babel.mybabelapplication.dao.UserDAO;
@@ -47,8 +49,18 @@ public class WriteExoVocListActivity extends ActionBarActivity {
     @BindView(R.id.text_view_result)
     protected TextView textViewResult;
 
-    @BindView(R.id.text_view_indexing)
-    protected TextView textViewIndexing;
+
+    @BindView(R.id.text_view_indexing1)
+    protected TextView textViewIndexing1;
+
+    @BindView(R.id.text_view_indexing2)
+    protected TextView textViewIndexing2;
+
+    @BindView(R.id.text_view_indexing3)
+    protected TextView textViewIndexing3;
+
+    @BindView(R.id.linear_layout_wrap_indexing)
+    protected LinearLayout wrapIndexing;
 
     @BindView(R.id.edit_text_answer)
     protected EditText textEditToTrad;
@@ -89,10 +101,12 @@ public class WriteExoVocListActivity extends ActionBarActivity {
         toolbar.setTitle(vocList.getName());
 
         textViewToTrad.setText(isFrench ? vocs.get(listOfIndex[index]).getFrench() : vocs.get(listOfIndex[index]).getEnglish());
-        /*textViewIndexing.setText(String.valueOf(index + 1) + " sur " + vocs.size() + "       " +
-                String.valueOf(listOfSuccess[0]) + " " + String.valueOf(listOfSuccess[1]) + " " + String.valueOf(listOfSuccess[2]) +
-                "       " + String.valueOf(vocs.get(listOfIndex[index]).getGrade())
-        );*/
+
+        String left = new String(new char[index]).replace("\0", " • -");
+        String right = new String(new char[vocs.size()-(index+1)]).replace("\0", "- • ");
+        textViewIndexing1.setText(left);
+        textViewIndexing2.setText(" • ");
+        textViewIndexing3.setText(right);
     }
 
     @Override
@@ -145,6 +159,10 @@ public class WriteExoVocListActivity extends ActionBarActivity {
                 }
             }
         }
+
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.addRule(RelativeLayout.ABOVE, R.id.next_voc_exo_button);
+        wrapIndexing.setLayoutParams(lp);
     }
 
     @OnClick(R.id.next_voc_exo_button)
