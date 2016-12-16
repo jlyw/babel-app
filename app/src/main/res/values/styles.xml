@@ -20,6 +20,8 @@
         <item name="colorControlActivated">@color/bottomNavColor</item>
         <item name="colorControlHighlight">@color/bottomNavColor</item>
     </style>
+    <style name="AppBaseTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppBaseTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <color name="colorText">#010000</color>
 </resources>

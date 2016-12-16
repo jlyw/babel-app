@@ -25,4 +25,7 @@
     <string name="are_you_sure_delete_list">Cela supprimera définitevement votre liste, êtes-vous sûr(e) ?</string>
     <string name="edit_button">EDITER</string>
     <string name="label_edit_list_activity">Editer une liste</string>
+    <string name="next">Suivant</string>
+    <string name="skip">Passer</string>
+    <string name="start">Allons y</string>
 </resources>
