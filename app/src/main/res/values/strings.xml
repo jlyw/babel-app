@@ -31,4 +31,6 @@
     <string name="skip">Passer</string>
     <string name="start">Allons y</string>
     <string name="azertyuiop">Une de vos réponses est vide !</string>
+    <string name="title_error_message_api_call">Erreur réseau</string>
+    <string name="error_message_api_call">Impossible d\'obtenir une réponse de l\'API, veuillez réessayer plus tard !</string>
 </resources>

@@ -11,50 +11,69 @@
         android:theme="@style/AppBaseTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Listes">
+            android:label="Listes"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreateListActivity"
+            android:label="@string/title_activity_create_list"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ShowVocListActivity"
+            android:label="@string/label_show_voc_list_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WriteExoVocListActivity"
+            android:label="@string/label_write_exo_voc_list"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResultExoActivity"
+            android:label="@string/label_result_exo_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SoundExoVocListActivity"
+            android:label="@string/label_write_exo_voc_list"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreateListVerbsActivity"
+            android:label="@string/label_create_list_verbs_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditListActivity"
+            android:label="@string/label_edit_list_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OnboardingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ShowVerbListActivity"
+            android:label="@string/label_show_voc_list_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditListVerbActivity"
+            android:label="@string/label_edit_list_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WriteExoVerbListActivity"
+            android:label="@string/label_write_exo_verb_list_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResultExoVerbActivity"
+            android:label="@string/label_result_exo_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ProfileActivity"
-            android:label="@string/title_activity_profile" />
-        <activity
-            android:name=".CreateListActivity"
-            android:label="@string/title_activity_create_list" />
-        <activity
-            android:name=".ShowVocListActivity"
-            android:label="@string/label_show_voc_list_activity" />
-        <activity
-            android:name=".WriteExoVocListActivity"
-            android:label="@string/label_write_exo_voc_list" />
-        <activity
-            android:name=".ResultExoActivity"
-            android:label="@string/label_result_exo_activity" />
-        <activity
-            android:name=".SoundExoVocListActivity"
-            android:label="@string/label_write_exo_voc_list" />
-        <activity
-            android:name=".CreateListVerbsActivity"
-            android:label="@string/label_create_list_verbs_activity" />
-        <activity
-            android:name=".EditListActivity"
-            android:label="@string/label_edit_list_activity" />
-        <activity android:name=".OnboardingActivity" />
-        <activity
-            android:name=".ShowVerbListActivity"
-            android:label="@string/label_show_voc_list_activity" />
-        <activity
-            android:name=".EditListVerbActivity"
-            android:label="@string/label_edit_list_activity" />
-        <activity
-            android:name=".WriteExoVerbListActivity"
-            android:label="@string/label_write_exo_verb_list_activity" />
-        <activity
-            android:name=".ResultExoVerbActivity"
-            android:label="@string/label_result_exo_activity"/>
     </application>
 
 </manifest>

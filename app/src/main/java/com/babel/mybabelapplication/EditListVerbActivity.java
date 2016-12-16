@@ -177,6 +177,8 @@ public class EditListVerbActivity extends ActionBarActivity {
 
                 editTextVerbFrench.setText("");
                 editTextVerbEnglish.setText("");
+            } else {
+                showAlert(R.string.title_error_message_api_call, R.string.error_message_api_call);
             }
         }
     };
