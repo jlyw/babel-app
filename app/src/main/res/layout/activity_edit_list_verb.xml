@@ -28,6 +28,8 @@ tools:context="com.babel.mybabelapplication.EditListVerbActivity">
         android:hint="@string/create_liste_name_placeholder"
         android:textColorHint="@color/bottomNavColor"
         android:textColor="#eb5e58"
+        android:imeOptions="actionNext"
+        android:maxLines="1"
         android:id="@+id/edit_text_voc_list_name"/>
 
     <Button
@@ -62,6 +64,8 @@ tools:context="com.babel.mybabelapplication.EditListVerbActivity">
             android:hint="@string/placeholder_create_voc_fr"
             android:textColorHint="@color/bottomNavColor"
             android:textColor="#eb5e58"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
             android:id="@+id/edit_text_voc_french"
             android:layout_weight=".4"/>
 
@@ -71,6 +75,8 @@ tools:context="com.babel.mybabelapplication.EditListVerbActivity">
             android:hint="@string/placeholder_create_voc_en"
             android:textColorHint="@color/bottomNavColor"
             android:textColor="#eb5e58"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
             android:id="@+id/edit_text_voc_english"
             android:layout_weight=".4"/>
 
