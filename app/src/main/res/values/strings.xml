@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyBabelApplication</string>
+    <string name="app_name">Babel</string>
     <string name="text_accueil">Accueil</string>
     <string name="text_newList">Créer une liste</string>
     <string name="text_profil">Profil</string>
