@@ -169,7 +169,7 @@ public class EditListVerbActivity extends ActionBarActivity {
     private Runnable runnable = new Runnable(){
         public void run() {
 
-            if(!verb.getSimplePast().isEmpty() && !verb.getPastParticiple().isEmpty()) {
+            if(verb.getSimplePast() != null && verb.getPastParticiple() != null) {
                 verbDAO.addVerb(verb);
 
                 verbs.add(verb);
