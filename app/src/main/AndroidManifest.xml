@@ -11,7 +11,7 @@
         android:theme="@style/AppBaseTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main">
+            android:label="Listes">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,6 +36,9 @@
         <activity
             android:name=".SoundExoVocListActivity"
             android:label="@string/label_write_exo_voc_list" />
+        <activity
+            android:name=".CreateListVerbsActivity"
+            android:label="Créer une nouvelle liste de verbes"></activity>
         <activity
             android:name=".EditListActivity"
             android:label="@string/label_edit_list_activity" />

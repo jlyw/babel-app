@@ -12,41 +12,93 @@ tools:context="com.babel.mybabelapplication.WriteExoVocListActivity">
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:layout_marginTop="50dp"
-    android:layout_marginBottom="60dp">
+    android:layout_marginTop="50dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Traduisez"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:id="@+id/text_view_trad"/>
+        android:orientation="horizontal"
+        android:id="@+id/layout_header_exo"
+        android:layout_marginBottom="60dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#3d3d3d"
+            android:text="Traduisez"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="34dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/text_view_trad"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#ffcba1"></LinearLayout>
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/layout_word_to_trad"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_trad"
-        android:id="@+id/text_view_to_trad"/>
+        android:layout_below="@id/layout_header_exo"
+        android:layout_marginBottom="100dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Le mot a traduire"
+            android:gravity="center"
+            android:background="@drawable/border_bottom"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:id="@+id/text_view_to_trad"/>
+    </LinearLayout>
 
-    <EditText
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/layout_text_answer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Votre réponse"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textColor="@color/colorPrimary"
-        android:layout_below="@+id/text_view_to_trad"
-        android:id="@+id/edit_text_answer"/>
+        android:layout_below="@id/layout_word_to_trad"
+        android:layout_marginBottom="8dp"
+        android:gravity="center">
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Votre réponse"
+            android:textColorHint="#737373"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:background="@drawable/border_bottom"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:id="@+id/edit_text_answer"/>
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/layout_answer"
+        android:layout_width="match_parent"
+        android:layout_below="@id/layout_text_answer"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_text_answer"
-        android:layout_above="@+id/valid_voc_exo_button"
-        android:id="@+id/text_view_result"/>
+        android:gravity="center">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_below="@+id/edit_text_answer"
+            android:textSize="16sp"
+            android:textColor="#eb5e58"
+            android:id="@+id/text_view_result"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,45 +107,55 @@ tools:context="com.babel.mybabelapplication.WriteExoVocListActivity">
         android:id="@+id/text_view_indexing"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Valider"
+        android:background="@drawable/button_rectangle"
         android:layout_alignParentBottom="true"
+        android:textColor="#eb5e58"
+        android:textSize="18sp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:id="@+id/valid_voc_exo_button"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Suivant"
         android:visibility="gone"
+        android:background="@drawable/button_rectangle"
         android:layout_alignParentBottom="true"
+        android:textColor="#eb5e58"
+        android:textSize="18sp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:id="@+id/next_voc_exo_button"/>
 
 
 </RelativeLayout>
 
 <!-- Toolbar/Actionbar on top of screen -->
-<android.support.design.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true">
-
-    <android.support.design.widget.AppBarLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:title="@string/title_activity_profile"/>
-    </android.support.design.widget.AppBarLayout>
-</android.support.design.widget.CoordinatorLayout>
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:title="@string/title_activity_profile"/>
+        </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
 </RelativeLayout>
 

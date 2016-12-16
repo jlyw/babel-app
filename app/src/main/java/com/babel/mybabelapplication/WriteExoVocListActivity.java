@@ -3,6 +3,8 @@ package com.babel.mybabelapplication;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
@@ -116,25 +118,32 @@ public class WriteExoVocListActivity extends ActionBarActivity {
 
             if(isFrench) {
                 if(Objects.equals(vocs.get(listOfIndex[index]).getEnglish().toLowerCase(), answer)) {
+                    textViewResult.setTextColor(Color.parseColor("#85c35d"));
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_success);
                     userDAO.userGoodAnswer();
                     textViewResult.setText("Bien joué !");
+
                     listOfSuccess[index] = 1;
                     vocDAO.upVocGrade(voc);
                 } else {
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_error);
+                    textViewResult.setText("Dommage !\nLa bonne réponse était " + vocs.get(listOfIndex[index]).getEnglish());
                     userDAO.userBadAnswer();
-                    textViewResult.setText("Dommage ! La bonne réponse était " + vocs.get(listOfIndex[index]).getEnglish());
                     listOfSuccess[index] = 0;
                     vocDAO.downVocGrade(voc);
                 }
             } else {
                 if(Objects.equals(vocs.get(listOfIndex[index]).getFrench().toLowerCase(), answer)) {
                     userDAO.userGoodAnswer();
+                    textViewResult.setTextColor(Color.parseColor("#85c35d"));
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_success);
                     textViewResult.setText("Bien joué !");
                     listOfSuccess[index] = 1;
                     vocDAO.upVocGrade(voc);
                 } else {
                     userDAO.userBadAnswer();
-                    textViewResult.setText("Dommage ! La bonne réponse était " + vocs.get(listOfIndex[index]).getFrench());
+                    textEditToTrad.setBackgroundResource(R.drawable.border_bottom_error);
+                    textViewResult.setText("Dommage !\nLa bonne réponse était " + vocs.get(listOfIndex[index]).getEnglish());
                     listOfSuccess[index] = 0;
                     vocDAO.downVocGrade(voc);
                 }
