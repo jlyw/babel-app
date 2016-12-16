@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/voc_word_pair"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp">
+    <ImageView
+        android:id="@+id/row_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="57dp"
+        android:maxWidth="57dp"
+        android:minHeight="57dp"
+        android:maxHeight="57dp"
+        android:layout_marginRight="27dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:text="français"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:id="@+id/voc_french_word" />
+
+    <TextView
+        android:text="anglais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/voc_french_word"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:id="@+id/voc_english_word" />
+
+    <ImageView
+        android:id="@+id/voc_sound_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="40dp"
+        android:maxWidth="40dp"
+        android:minHeight="40dp"
+        android:maxHeight="40dp"
+        android:layout_marginLeft="27dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
+</LinearLayout>

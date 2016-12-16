@@ -4,6 +4,8 @@ import android.support.annotation.Nullable;
 
 import com.babel.mybabelapplication.model.Verb;
 import com.babel.mybabelapplication.model.VerbList;
+import com.babel.mybabelapplication.model.Voc;
+import com.babel.mybabelapplication.model.VocList;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,9 +31,14 @@ public class VerbDAO {
 
     // récupérer tous les verbs
     public List<Verb> getAllVerbs() {
-        List<Verb> allVerbs = realm.where(Verb.class).findAll();
 
-        return allVerbs;
+        return realm.where(Verb.class).findAll();
+    }
+
+    // récupérer tous les verbs d'une liste
+    public List<Verb> getAllVerbsOffOneList(String listId) {
+        VerbList verbList = realm.where(VerbList.class).equalTo("id", listId).findFirst();
+        return verbList.getVerbs();
     }
 
     // ajouter un verb
@@ -79,13 +86,6 @@ public class VerbDAO {
         verb.deleteFromRealm();
         realm.commitTransaction();
     }
-
-    // la bière est-elle présente dans les favoris
-    /*public boolean isPresentInFavorites(Verb verb) {
-        Verb verb = getVerb(verb.getId());
-
-        return verb != null;
-    }*/
 
 //    Ajouter un verb à une liste
     public void addVerbToVerbListId(Verb verb, String verbListId) {
