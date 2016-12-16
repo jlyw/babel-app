@@ -180,11 +180,38 @@ tools:context="com.babel.mybabelapplication.WriteExoVerbListActivity">
             android:id="@+id/edit_view_past_participle"/>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
         android:layout_above="@+id/valid_voc_exo_button"
-        android:id="@+id/text_view_indexing"/>
+        android:id="@+id/linear_layout_wrap_indexing">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="34sp"
+            android:textColor="#ffcba1"
+            android:fontFamily="sans-serif-medium"
+            android:id="@+id/text_view_indexing1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="34sp"
+            android:textColor="#eb5e58"
+            android:fontFamily="sans-serif-medium"
+            android:id="@+id/text_view_indexing2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="34sp"
+            android:textColor="#FFECD5"
+            android:fontFamily="sans-serif-medium"
+            android:id="@+id/text_view_indexing3"/>
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
@@ -196,6 +223,7 @@ tools:context="com.babel.mybabelapplication.WriteExoVerbListActivity">
         android:textSize="18sp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="10dp"
         android:id="@+id/valid_voc_exo_button"/>
 
     <Button
@@ -209,6 +237,7 @@ tools:context="com.babel.mybabelapplication.WriteExoVerbListActivity">
         android:textSize="18sp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="10dp"
         android:id="@+id/next_voc_exo_button"/>
 
 

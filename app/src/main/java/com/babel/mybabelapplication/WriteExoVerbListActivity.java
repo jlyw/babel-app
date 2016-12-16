@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.babel.mybabelapplication.dao.UserDAO;
@@ -68,8 +70,17 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
 
 
 
-    @BindView(R.id.text_view_indexing)
-    protected TextView textViewIndexing;
+    @BindView(R.id.text_view_indexing1)
+    protected TextView textViewIndexing1;
+
+    @BindView(R.id.text_view_indexing2)
+    protected TextView textViewIndexing2;
+
+    @BindView(R.id.text_view_indexing3)
+    protected TextView textViewIndexing3;
+
+    @BindView(R.id.linear_layout_wrap_indexing)
+    protected LinearLayout wrapIndexing;
 
     @BindView(R.id.valid_voc_exo_button)
     protected Button buttonValidAnswer;
@@ -133,10 +144,12 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
             text_view_past_participle.setVisibility(View.VISIBLE);
             edit_view_past_participle.setVisibility(View.GONE);
         }
-        /*textViewIndexing.setText(String.valueOf(index + 1) + " sur " + verbs.size() + "       " +
-                String.valueOf(listOfSuccess[0]) + " " + String.valueOf(listOfSuccess[1]) + " " + String.valueOf(listOfSuccess[2]) +
-                "       " + String.valueOf(verbs.get(listOfIndex[index]).getGrade())
-        );*/
+
+        String left = new String(new char[index]).replace("\0", " • -");
+        String right = new String(new char[verbs.size()-(index+1)]).replace("\0", "- • ");
+        textViewIndexing1.setText(left);
+        textViewIndexing2.setText(" • ");
+        textViewIndexing3.setText(right);
     }
 
     @Override
@@ -375,6 +388,10 @@ public class WriteExoVerbListActivity extends ActionBarActivity {
                 }
             }
         }
+
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.addRule(RelativeLayout.ABOVE, R.id.next_voc_exo_button);
+        wrapIndexing.setLayoutParams(lp);
     }
 
     @OnClick(R.id.next_voc_exo_button)
