@@ -30,4 +30,5 @@
     <string name="next">Suivant</string>
     <string name="skip">Passer</string>
     <string name="start">Allons y</string>
+    <string name="azertyuiop">Une de vos réponses est vide !</string>
 </resources>

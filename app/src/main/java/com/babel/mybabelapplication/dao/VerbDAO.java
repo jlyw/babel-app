@@ -79,6 +79,22 @@ public class VerbDAO {
         realm.copyToRealmOrUpdate(verb);
         realm.commitTransaction();
     }
+    public void upVerbGrade(Verb verb) {
+        realm.beginTransaction();
+        if(verb.getGrade() < 2) {
+            verb.setGrade(verb.getGrade()+1);
+        }
+        realm.copyToRealmOrUpdate(verb);
+        realm.commitTransaction();
+    }
+    public void downVerbGrade(Verb verb) {
+        realm.beginTransaction();
+        if(verb.getGrade() > 0) {
+            verb.setGrade(verb.getGrade()-1);
+        }
+        realm.copyToRealmOrUpdate(verb);
+        realm.commitTransaction();
+    }
 
     // supprimer un verb
     public void deleteVerb(Verb verb) {

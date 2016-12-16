@@ -45,13 +45,16 @@
         <activity android:name=".OnboardingActivity" />
         <activity
             android:name=".ShowVerbListActivity"
-            android:label="@string/label_show_voc_list_activity"/>
+            android:label="@string/label_show_voc_list_activity" />
         <activity
             android:name=".EditListVerbActivity"
-            android:label="@string/label_edit_list_activity"/>
+            android:label="@string/label_edit_list_activity" />
         <activity
             android:name=".WriteExoVerbListActivity"
             android:label="@string/label_write_exo_verb_list_activity" />
+        <activity
+            android:name=".ResultExoVerbActivity"
+            android:label="@string/label_result_exo_activity"/>
     </application>
 
 </manifest>
