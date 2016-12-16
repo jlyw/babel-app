@@ -4,25 +4,25 @@
     <item
         android:id="@+id/action_home"
         android:enabled="true"
-        android:icon="@drawable/ic_favorite_white_24dp"
+        android:icon="@drawable/ic_icon_home"
         android:title="Listes"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_new_list"
         android:enabled="true"
-        android:icon="@drawable/ic_access_time_white_24dp"
+        android:icon="@drawable/ic_icon_list_voc"
         android:title="Créer liste vocabulaire"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_new_list_verbs"
         android:enabled="true"
-        android:icon="@drawable/ic_access_time_white_24dp"
+        android:icon="@drawable/ic_icon_list_verb"
         android:title="Créer liste verbes"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_profile"
         android:enabled="true"
-        android:icon="@drawable/ic_audiotrack_white_24dp"
+        android:icon="@drawable/ic_icon_profile"
         android:title="@string/text_profil"
         app:showAsAction="ifRoom" />
 </menu>
