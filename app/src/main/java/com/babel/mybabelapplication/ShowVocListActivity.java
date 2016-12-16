@@ -235,4 +235,14 @@ public class ShowVocListActivity extends ActionBarActivity {
         intent.putExtra("LIST_VOC_ID", listVocId);
         startActivity(intent);
     }
+
+    @OnClick(R.id.icon_hide_french_words)
+    public void hideFrenchContent() {
+        vocAdapter.toggleFrenchVisibility();
+    }
+
+    @OnClick(R.id.icon_hide_english_words)
+    public void setIconHideEnglishWords() {
+        vocAdapter.toggleEnglishVisibility();
+    }
 }
