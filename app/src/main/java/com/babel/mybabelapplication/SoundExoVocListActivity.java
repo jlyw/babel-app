@@ -100,6 +100,13 @@ public class SoundExoVocListActivity extends ActionBarActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        intent = new Intent(getApplicationContext(), ShowVocListActivity.class);
+        intent.putExtra("LIST_VOC_ID", listVocId);
+        startActivity(intent);
+    }
+
     @OnClick(R.id.valid_voc_exo_button)
     public void validVocWriteExo() {
         String answer = textEditToTrad.getText().toString().toLowerCase();

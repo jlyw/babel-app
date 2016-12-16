@@ -38,7 +38,8 @@
             android:label="@string/label_write_exo_voc_list" />
         <activity
             android:name=".EditListActivity"
-            android:label="@string/label_edit_list_activity"/>
+            android:label="@string/label_edit_list_activity" />
+        <activity android:name=".OnboardingActivity"></activity>
     </application>
 
 </manifest>

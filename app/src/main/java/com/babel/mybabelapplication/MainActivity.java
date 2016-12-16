@@ -133,6 +133,9 @@ public class MainActivity extends ActionBarActivity {
             user.setCreatedList(0);
 
             userDao.addUser(user);
+
+            intent = new Intent(getApplicationContext(), OnboardingActivity.class);
+            startActivity(intent);
         }
 
         // Get a verb - If remove those lines, remove textView on activity_main.xml
